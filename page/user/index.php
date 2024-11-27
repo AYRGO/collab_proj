@@ -1,9 +1,18 @@
 <?php
 session_start();
+
+// Check if the user is already logged in
+if (!isset($_SESSION['user'])) {
+    // If the user is not logged in, redirect them to the login page
+    header('Location: ../../loginpage.php');
+    exit(); // Ensure no further code execution after the redirect
+}
+
+// If the user is logged in, continue with fetching the data
 require '../../include/landing/connect.php';
 
 try {
-    $sql = "Select fname, lname, email contact, dob, usertype, created_at from user_registration";
+    $sql = "SELECT fname, lname, email, contact, dob, usertype, created_at FROM user_registration";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 
@@ -12,6 +21,7 @@ try {
     echo "There is some problem in connection: " . $e->getMessage();
 }
 ?>
+
 <!doctype html>
 <html>
 
@@ -75,7 +85,7 @@ try {
                             </li>
                             <li><a href="usersetting.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Settings</a>
                             </li>
-                            <li><a href="../../loginpage.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a>
+                            <li><a href="../../include/user/logut.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a>
                             </li>
                         </ul>
                     </div>
