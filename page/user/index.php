@@ -2,14 +2,14 @@
     session_start();
     require '../../include/landing/connect.php';
 
-    try{
-        $sql = "Select fname, lname, email contact, dob, usertype, created_at from user_registration where id = :id";
-
+    try {
+        $id = $_SESSION['id'];
+        $sql = "SELECT fname, lname, email, contact, dob, usertype, created_at FROM user_registration WHERE id = :id";
         $stmt = $pdo->prepare($sql);
-        $stmt ->execute();
+        $stmt->execute([':id' => $id]);
 
-        $users = $stmt ->fetchAll(PDO::FETCH_ASSOC);
-    } catch(PDOException $e){
+        $users = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch a single row
+    } catch(PDOException $e) {
         echo "There is some problem in connection: " . $e->getMessage();
     }
 ?>
@@ -93,13 +93,13 @@
                 </div>
                 <h1 class="font-bold text-xl">
                     <?php
-                        echo htmlspecialchars($users[0]['fname']) . " " . htmlspecialchars($users[0]['lname']);
+                        echo htmlspecialchars($users['fname']) . " " . htmlspecialchars($users['lname']);
                     ?>
                 </h1>
 
                 <p class="text-gray-700 text-sm">
                     <?php
-                        echo htmlspecialchars($users[0]['usertype']);
+                        echo htmlspecialchars($users['usertype']);
                     ?>
                 </p>
 
@@ -113,7 +113,7 @@
                         <span>Member Since</span>
                         <p>
                             <?php
-                                echo htmlspecialchars($users[0]['created_at']);
+                                echo htmlspecialchars($users['created_at']);
                             ?>
                         </p>
                     </div>
@@ -170,8 +170,7 @@
         <!-- Right Column: Welcome, Featured Events, Announcements, and Resources -->
         <div class="bg-white p-6 rounded-lg shadow-lg w-3/5">
             <h1 class="font-bold text-3xl text-center text-blue-800">Welcome to the PWD Community!</h1>
-            <p class="text-gray-800 text-center py-2">Discover opportunities, connect with peers, and access valuable
-                resources tailored just for you.</p>
+            <p class="text-gray-800 text-center py-2">Access your personalized dashboard, connect with the community, and explore exclusive resources tailored for you.</p>
 
 
             <!-- featured events -->
