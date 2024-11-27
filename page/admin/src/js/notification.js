@@ -1,7 +1,7 @@
               // Function to fetch unread notification count
               function fetchNotificationCount() {
                 const xhr = new XMLHttpRequest();
-                xhr.open("GET", "src/fetch_unread_notification.php", true);
+                xhr.open("GET", "/pwd/page/admin/src/fetch_unread_notification.php", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             
                 xhr.onload = function() {
@@ -50,7 +50,7 @@
             // Function to fetch and display notification details in real-time
             function fetchNotificationDetails() {
                 const xhr = new XMLHttpRequest();
-                xhr.open("GET", "src/fetch_unread_notification.php", true);
+                xhr.open("GET", "/pwd/page/admin/src/fetch_unread_notification.php", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             
                 xhr.onload = function() {
@@ -97,7 +97,7 @@
             // Function to mark notifications as read
             function markNotificationsAsRead() {
                 const xhr = new XMLHttpRequest();
-                xhr.open("POST", "../src/mark_as_read.php", true);
+                xhr.open("POST", "/pwd/page/admin/src/mark_as_read.php", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             
                 xhr.onload = function() {
