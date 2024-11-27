@@ -56,29 +56,30 @@ try {
                 </button>
 
                 <!-- Profile picture -->
-                <div class="group">
-                    <a href="../../loginpage.php">
-                        <img class="h-8 w-8 rounded-full"
-                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="Profile picture">
-                    </a>
+                <div  class="group cursor-pointer">
+                    <img class="h-8 w-8 rounded-full" id="profileIcon"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt="Profile picture">
+              
+                <!-- <a href="loginpage.php">
+                    <img class="h-8 w-8 rounded-full"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt="Profile picture">
+                </a> -->
 
-
-                    <div
-                        class="hidden dropdown group-hover:block absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-8">
+                
+                <div
+                        class="hidden dropdown absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-8" id="dropdownProfile">
                         <ul class="p-3 space-y-3">
-                            <li><a href="index.php"
-                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a>
+                            <li><a href="index.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a>
                             </li>
-                            <li><a href="usersetting.php"
-                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Settings</a>
+                            <li><a href="usersetting.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Settings</a>
                             </li>
-                            <li><a href="../../../loginpage.php"
-                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Logout</a>
+                            <li><a href="loginpage.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a>
                             </li>
                         </ul>
                     </div>
-                </div>
+            </div>
             </div>
         </div>
     </nav>
@@ -265,15 +266,17 @@ try {
 
 
             <div class="mt-8 p-6">
-    <h2 class="font-bold text-xl text-blue-600 border-b-2 pb-2">Apply for Your PWD Card</h2>
-    <p class="text-gray-700 mt-4">
-        The PWD (Persons with Disabilities) card offers various benefits including discounts, special services, and more. 
-        If you or someone you know is eligible, you can apply for the card today and gain access to these resources.
-    </p>
-    <a href="../../page/user/pwd_form.php" class="mt-4 block text-blue-500 hover:underline font-semibold">
-        Apply Now
-    </a>
-</div>
+                <h2 class="font-bold text-xl text-blue-600 border-b-2 pb-2">Apply for Your PWD Card</h2>
+                <p class="text-gray-700 mt-4">
+                    The PWD (Persons with Disabilities) card offers various benefits including discounts, special
+                    services, and more.
+                    If you or someone you know is eligible, you can apply for the card today and gain access to these
+                    resources.
+                </p>
+                <a href="../../page/user/pwd_form.php" class="mt-4 block text-blue-500 hover:underline font-semibold">
+                    Apply Now
+                </a>
+            </div>
 
 
             <!-- User Feedback Section -->
@@ -287,6 +290,14 @@ try {
             </div>
         </div>
     </div>
+    <script>
+           const profileIcon = document.getElementById('profileIcon');
+    const dropdownProfile = document.getElementById('dropdownProfile');
+
+    profileIcon.addEventListener('click', () => {
+        dropdownProfile.classList.toggle('hidden');
+    });
+    </script>
 </body>
 
 </html>
