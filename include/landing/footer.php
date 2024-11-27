@@ -16,10 +16,10 @@
             <div class="w-1/2">
                 <h1 class="text-lg font-bold mt-6 mb-4">Services</h1>
                 <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Information and Resources</a></li>
-                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Job Opportunities</a></li>
-                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Empowering Inclusion</a></li>
-                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">PWD Card Application</a></li>
+                    <li><a href="#informationResources" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Information and Resources</a></li>
+                    <li><a href="#jobOpportunities" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Job Opportunities</a></li>
+                    <li><a href="#empoweringInclusion" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Empowering Inclusion</a></li>
+                    <li><a href="#pwdCardApplications" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">PWD Card Application</a></li>
                 </ul>
              </div>
 
@@ -27,11 +27,10 @@
              <div class="w-1/2">
                 <h1 class="text-lg font-bold mt-6 mb-4">Quick Links</h1>
                 <ul class="space-y-2">
-                    <li><a href="#landingpage.php" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Home</a></li>
-                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">About Us</a></li>
-                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Services</a></li>
-                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Resources</a></li>
-                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Contact Us</a></li>
+                    <li><a href="index.php" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Home</a></li>
+                    <li><a href="announcement.php" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Announcements</a></li>
+                    <li><a href="application.php" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Application</a></li>
+                    <li><a href="contact.php" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Contact Us</a></li>
                 </ul>
              </div>
             

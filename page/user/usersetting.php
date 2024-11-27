@@ -1,13 +1,16 @@
 <!doctype html>
 <html>
+
 <head>
-<style>
-        #signupSection::-webkit-scrollbar{
-    display: none;
-    }
+    <style>
+        #signupSection::-webkit-scrollbar {
+            display: none;
+        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWD Project</title>
+    <link rel="icon" href="../../img/logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -38,26 +41,33 @@
                 </button>
 
                 <!-- Profile picture -->
-                <div  class="group">
-                <a href="loginpage.php">
+                <div class="group cursor-pointer">
+                    <img class="h-8 w-8 rounded-full" id="profileIcon"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt="Profile picture">
+
+                    <!-- <a href="loginpage.php">
                     <img class="h-8 w-8 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt="Profile picture">
-                </a>
+                </a> -->
 
-                
-                <div
-                        class="hidden dropdown group-hover:block absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-8">
+
+                    <div class="hidden dropdown absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-8"
+                        id="dropdownProfile">
                         <ul class="p-3 space-y-3">
-                            <li><a href="userdashboard.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a>
+                            <li><a href="index.php"
+                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a>
                             </li>
-                            <li><a href="usersetting.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Settings</a>
+                            <li><a href="usersetting.php"
+                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Settings</a>
                             </li>
-                            <li><a href="../../loginpage.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Logout</a>
+                            <li><a href="../../loginpage.php"
+                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a>
                             </li>
                         </ul>
                     </div>
-            </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -96,77 +106,61 @@
                     </div>
                 </div>
             </div>
-    <!--end of profile info  -->
+            <!--end of profile info  -->
 
             <!-- Services Available -->
             <div class="bg-white p-4 rounded-lg text-center shadow-md">
                 <h1 class="font-bold text-xl">Services Available</h1>
                 <p class="text-gray-600 mt-2">Explore the services available to enhance your experience:</p>
-
                 <div class="flex flex-wrap items-center gap-3 py-3">
-                    <a href="#">
-                        <button class="bg-blue-100 text-gray-700 font-semibold py-2 px-3 rounded-lg flex items-center">
-                            <span class="material-icons mr-2">info</span> Information & Resources
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="bg-blue-100 text-gray-700 font-semibold py-2 px-3 rounded-lg flex items-center">
-                            <span class="material-icons mr-2">credit_card</span>PWD Card
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="bg-blue-100 text-gray-700 font-semibold py-2 px-3 rounded-lg flex items-center">
-                            <span class="material-icons mr-2">school</span>Scholarships
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="bg-blue-100 text-gray-700 font-semibold py-2 px-3 rounded-lg flex items-center">
-                            <span class="material-icons mr-2">work</span>Job Opportunities
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="bg-blue-100 text-gray-700 font-semibold py-2 px-3 rounded-lg flex items-center">
-                            <span class="material-icons mr-2">
-                                cast_for_education</span>Advocacy Programs
-                        </button>
-
-                        </span>
-                    </a>
-
-                    <a href="#">
-                        <button class="bg-blue-100 text-gray-700 font-semibold py-2 px-3 rounded-lg flex items-center">
-
-                            <span class="material-icons mr-2">
-                                event_available
-                            </span>
-                            Events
-                        </button>
-                    </a>
-
-
-                    <a href="">
-                        <button class="bg-blue-100 text-gray-700 font-semibold py-2 px-3 rounded-lg flex items-center">
-                            <span class="material-icons mr-2">group</span>Peer Groups
-                        </button>
-                    </a>
+                    <!-- Service Buttons -->
+                    <a href="#"><button
+                            class="bg-blue-100 text-gray-700 font-semibold py-2 px-3 rounded-lg flex items-center"><span
+                                class="material-icons mr-2">info</span> Information & Resources</button></a>
+                    <a href="#"><button
+                            class="bg-blue-100 text-gray-700 font-semibold py-2 px-3 rounded-lg flex items-center"><span
+                                class="material-icons mr-2">credit_card</span> PWD Card</button></a>
+                    <a href="#"><button
+                            class="bg-blue-100 text-gray-700 font-semibold py-2 px-3 rounded-lg flex items-center"><span
+                                class="material-icons mr-2">school</span> Scholarships</button></a>
+                    <a href="#"><button
+                            class="bg-blue-100 text-gray-700 font-semibold py-2 px-3 rounded-lg flex items-center"><span
+                                class="material-icons mr-2">work</span> Job Opportunities</button></a>
+                    <a href="#"><button
+                            class="bg-blue-100 text-gray-700 font-semibold py-2 px-3 rounded-lg flex items-center"><span
+                                class="material-icons mr-2">event_available</span> Events</button></a>
+                    <a href="#"><button
+                            class="bg-blue-100 text-gray-700 font-semibold py-2 px-3 rounded-lg flex items-center"><span
+                                class="material-icons mr-2">cast_for_education</span> Advocacy Programs</button></a>
 
                 </div>
             </div>
             <!-- end of services available -->
 
-            <!-- Community Engagement -->
-            <div class="bg-white p-4 rounded-lg text-left shadow-md">
-                <h2 class="font-bold text-xl text-center">Community Engagement</h2>
-                <ul class="list-disc list-inside mt-2 text-gray-700">
-                    <li><a href="discussion_link_1" class="text-blue-500 hover:underline">Commented on PWD Card
-                            Features</a></li>
-                    <li><a href="discussion_link_2" class="text-blue-500 hover:underline">Tips for Applying for
-                            Scholarships</a></li>
-                </ul>
-                <p class="mt-2">For more interactions, visit the <a href="forum_link"
-                        class="text-blue-500 hover:underline">Community Forum</a>.</p>
+             <!-- PWD Card Information and Support -->
+             <div class="bg-white p-4 rounded-lg text-left shadow-md">
+                <h2 class="font-bold text-xl text-center">PWD Card Information & Support</h2>
+                <p class="text-gray-700 mt-2">The PWD card provides various benefits and privileges. This section covers
+                    everything you need to know about applying, its benefits, and your rights.</p>
+
+                <div class="py-2 space-y-2">
+                    <a href="benefits_of_pwd_card"
+                        class="block text-gray-700 bg-gray-200 px-4 py-2 rounded-xl hover:bg-blue-200 hover:text-black">Explore
+                        the Benefits of Having a PWD Card</a>
+                    <a href="pwd_card_laws"
+                        class="block text-gray-700 bg-gray-200 px-4 py-2 rounded-xl hover:bg-blue-200 hover:text-black">Get
+                        Familiar with the Laws and Regulations Around PWD Cards</a>
+                    <a href="how_to_apply_for_pwd_card"
+                        class="block text-gray-700 bg-gray-200 px-4 py-2 rounded-xl hover:bg-blue-200 hover:text-black">Step-by-Step
+                        Guide: How to Apply for a PWD Card</a>
+                    <a href="pwd_rights_and_privileges"
+                        class="block text-gray-700 bg-gray-200 px-4 py-2 rounded-xl hover:bg-blue-200 hover:text-black">Know
+                        Your Rights and Privileges as a PWD Cardholder</a>
+                </div>
+                <p class="mt-4 text-gray-700">If you have questions or need support, please contact us directly at <a
+                        href="contact_link" class="text-blue-500 hover:underline">pwdproject@gmail.com</a>, and our team
+                    will be happy to assist you.</p>
             </div>
-            <!-- end of community engagement -->
         </div>
         <!-- end of first section column -->
 
@@ -207,7 +201,7 @@
             <!-- end of profile information -->
 
             <!-- Activity Log -->
-            <div class="h-[400px] overflow-y-auto bg-white p-4 rounded-lg shadow-md signupSection" id="signupSection">
+            <div class="h-auto bg-white p-4 rounded-lg shadow-md signupSection" id="signupSection">
                 <h1 class="font-bold text-xl mb-4">Activity Log</h1>
                 <div class="mb-2">
                     <h6 class="text-gray-600 font-semibold text-lg">October 24, 2024</h6>
@@ -234,7 +228,7 @@
                             <p class="text-gray-500 text-sm">09:43 PM</p>
                         </div>
 
-                        
+
 
                     </div>
 
@@ -350,7 +344,7 @@
                             <p class="text-gray-500 text-sm">09:43 PM</p>
                         </div>
 
-                        
+
 
                     </div>
 
@@ -443,6 +437,14 @@
 
         </div>
     </div>
+    <script>
+        const profileIcon = document.getElementById('profileIcon');
+        const dropdownProfile = document.getElementById('dropdownProfile');
+
+        profileIcon.addEventListener('click', () => {
+            dropdownProfile.classList.toggle('hidden');
+        });
+    </script>
 </body>
 
 </html>
