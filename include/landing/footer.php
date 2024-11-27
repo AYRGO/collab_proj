@@ -7,12 +7,23 @@
                     <h1 class="font-bold text-lg">PWD Project</h1>
                 </div>
                 <p class="leading-relaxed py-3">Empowering persons with disabilities through comprehensive support and essential services to enhance their quality of life.</p>
-                <button class="py-2 px-5 text-md font-semibold text-blue-700 bg-blue-700 text-white rounded-full text-sm hover:bg-blue-600">
+                <button class="py-2 px-5 text-md font-semibold text-white bg-blue-700 text-white rounded-full text-sm hover:bg-blue-600">
                     Contact Us
                 </button>
             </div>
 
             <!-- second div -->
+            <div class="w-1/2">
+                <h1 class="text-lg font-bold mt-6 mb-4">Services</h1>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Information and Resources</a></li>
+                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Job Opportunities</a></li>
+                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Empowering Inclusion</a></li>
+                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">PWD Card Application</a></li>
+                </ul>
+             </div>
+
+                   <!-- third div -->
              <div class="w-1/2">
                 <h1 class="text-lg font-bold mt-6 mb-4">Quick Links</h1>
                 <ul class="space-y-2">
@@ -23,18 +34,7 @@
                     <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Contact Us</a></li>
                 </ul>
              </div>
-
-             <!-- third div -->
-             <div class="w-1/2">
-                <h1 class="text-lg font-bold mt-6 mb-4">Resources</h1>
-                <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Home</a></li>
-                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">About Us</a></li>
-                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Services</a></li>
-                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Resources</a></li>
-                    <li><a href="#" class="hover:text-blue-700 hover:font-semibold hover:underline transition duration-300">Contact Us</a></li>
-                </ul>
-             </div>
+            
 
               <!-- fourth div -->
                <div class="w-full">

@@ -20,7 +20,7 @@ try {
                 session_start();
                 $_SESSION['user'] = $user;  
                 echo("Login Successful");
-                header('Location: index.php');
+                header('Location: page/user/index.php');
                 exit();
             } else {
                 // Incorrect password

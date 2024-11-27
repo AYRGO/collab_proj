@@ -47,7 +47,7 @@
                 echo "Failed to register user!";
             }
 
-            header('Location: index.php');
+            header('Location: page/user/index.php');
         }    
     } catch (Exception $e) {
         echo "An error occurred: " . $e->getMessage();

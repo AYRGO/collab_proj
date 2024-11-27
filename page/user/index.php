@@ -75,7 +75,7 @@ try {
                             </li>
                             <li><a href="usersetting.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Settings</a>
                             </li>
-                            <li><a href="loginpage.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a>
+                            <li><a href="../../loginpage.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a>
                             </li>
                         </ul>
                     </div>
