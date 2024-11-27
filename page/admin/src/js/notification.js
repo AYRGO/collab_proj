@@ -1,7 +1,7 @@
               // Function to fetch unread notification count
               function fetchNotificationCount() {
                 const xhr = new XMLHttpRequest();
-                xhr.open("GET", "/pwd/page/admin/src/fetch_unread_notification.php", true);
+                xhr.open("GET", "src/fetch_unread_notification.php", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             
                 xhr.onload = function() {
@@ -50,7 +50,7 @@
             // Function to fetch and display notification details in real-time
             function fetchNotificationDetails() {
                 const xhr = new XMLHttpRequest();
-                xhr.open("GET", "/pwd/page/admin/src/fetch_unread_notification.php", true);
+                xhr.open("GET", "src/fetch_unread_notification.php", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             
                 xhr.onload = function() {
@@ -94,17 +94,35 @@
                 xhr.send();
             }
             
-            // Function to mark notifications as read
             function markNotificationsAsRead() {
                 const xhr = new XMLHttpRequest();
-                xhr.open("POST", "/pwd/page/admin/src/mark_as_read.php", true);
+                xhr.open("POST", "src/mark_as_read.php", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             
-                xhr.onload = function() {
+                xhr.onload = function () {
                     if (xhr.status === 200) {
                         const data = JSON.parse(xhr.responseText);
                         if (data.status === 'success') {
                             console.log("Notifications marked as read");
+            
+                            // Reset the notification count
+                            const notificationCountElement = document.getElementById("notification-count");
+                            notificationCountElement.textContent = 0;
+                            notificationCountElement.classList.add("hidden");
+            
+                            // Update the notification table with the latest 5 notifications
+                            const tableBody = document.getElementById("notification-table-body");
+                            tableBody.innerHTML = ''; // Clear existing rows
+            
+                            data.notifications.forEach(notification => {
+                                const row = document.createElement("tr");
+                                row.innerHTML = `
+                                    <td class="px-4 py-2">${notification.fname} ${notification.mname || ''} ${notification.lname}</td>
+                                    <td class="px-4 py-2">${notification.disability}</td>
+                                    <td class="px-4 py-2">${notification.submitted_at}</td>
+                                `;
+                                tableBody.appendChild(row);
+                            });
                         } else {
                             console.error("Failed to mark notifications as read");
                         }
@@ -116,5 +134,6 @@
                 xhr.send();
             }
             
+
             // Polling to update notification details every 5 seconds (make it feel real-time)
             setInterval(fetchNotificationDetails, 5000); // You can adjust the interval time as needed
