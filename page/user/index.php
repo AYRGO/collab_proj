@@ -3,7 +3,8 @@
     require '../../include/landing/connect.php';
 
     try{
-        $sql = "Select fname, lname, email contact, dob, usertype, created_at from user_registration";
+        $sql = "Select fname, lname, email contact, dob, usertype, created_at from user_registration where id = :id";
+
         $stmt = $pdo->prepare($sql);
         $stmt ->execute();
 
