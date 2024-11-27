@@ -50,7 +50,7 @@
             // Function to fetch and display notification details in real-time
             function fetchNotificationDetails() {
                 const xhr = new XMLHttpRequest();
-                xhr.open("GET", "../src/fetch_unread_notification.php", true);
+                xhr.open("GET", "src/fetch_unread_notification.php", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             
                 xhr.onload = function() {
