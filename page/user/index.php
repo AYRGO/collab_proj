@@ -66,30 +66,32 @@ try {
                 </button>
 
                 <!-- Profile picture -->
-                <div  class="group cursor-pointer">
+                <div class="group cursor-pointer">
                     <img class="h-8 w-8 rounded-full" id="profileIcon"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt="Profile picture">
-              
-                <!-- <a href="loginpage.php">
+
+                    <!-- <a href="loginpage.php">
                     <img class="h-8 w-8 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt="Profile picture">
                 </a> -->
 
-                
-                <div
-                        class="hidden dropdown absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-8" id="dropdownProfile">
+
+                    <div class="hidden dropdown absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-8"
+                        id="dropdownProfile">
                         <ul class="p-3 space-y-3">
-                            <li><a href="index.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a>
+                            <li><a href="index.php"
+                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a>
                             </li>
-                            <li><a href="usersetting.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Settings</a>
+                            <li><a href="usersetting.php"
+                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Settings</a>
                             </li>
                             <li><a href="../../include/user/logut.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a>
                             </li>
                         </ul>
                     </div>
-            </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -158,10 +160,11 @@ try {
                                 class="material-icons mr-2">work</span> Job Opportunities</button></a>
                     <a href="#"><button
                             class="bg-blue-100 text-gray-700 font-semibold py-2 px-3 rounded-lg flex items-center"><span
-                                class="material-icons mr-2">cast_for_education</span> Advocacy Programs</button></a>
+                                class="material-icons mr-2">event_available</span> Events</button></a>
                     <a href="#"><button
                             class="bg-blue-100 text-gray-700 font-semibold py-2 px-3 rounded-lg flex items-center"><span
-                                class="material-icons mr-2">event_available</span> Events</button></a>
+                                class="material-icons mr-2">cast_for_education</span> Advocacy Programs</button></a>
+
                 </div>
             </div>
 
@@ -301,12 +304,12 @@ try {
         </div>
     </div>
     <script>
-           const profileIcon = document.getElementById('profileIcon');
-    const dropdownProfile = document.getElementById('dropdownProfile');
+        const profileIcon = document.getElementById('profileIcon');
+        const dropdownProfile = document.getElementById('dropdownProfile');
 
-    profileIcon.addEventListener('click', () => {
-        dropdownProfile.classList.toggle('hidden');
-    });
+        profileIcon.addEventListener('click', () => {
+            dropdownProfile.classList.toggle('hidden');
+        });
     </script>
 </body>
 

@@ -2,7 +2,7 @@
 session_start();
 ?>
 <!doctype html>
-<html>
+<html class="scroll-smooth">
 
 <head>
     <style>
@@ -240,7 +240,7 @@ session_start();
 
                     </div>
 
-                    <div class="">
+                    <div class="" id="informationResources">
                         <h1 class="text-xl md:text-3xl font-bold text-gray-800 mb-2 md:mb-3">Information and Resources
                         </h1>
                         <p class="leading-loose md:text-lg">
@@ -299,7 +299,7 @@ session_start();
 
                     </div>
 
-                    <div class="">
+                    <div class="" id="jobOpportunities">
                         <h1 class="text-xl md:text-3xl font-bold text-gray-800 mb-2 md:mb-3">Job Opportunities</h1>
                         <p class="leading-loose md:text-lg">
                             We connect people with disabilities (PWDs) to accessible job opportunities and promote
@@ -357,7 +357,7 @@ session_start();
 
                     </div>
 
-                    <div class="">
+                    <div class="" id="empoweringInclusion">
                         <h1 class="text-xl md:text-3xl font-bold text-gray-800 mb-2 md:mb-3">Empowering Inclusion</h1>
                         <p class="leading-loose md:text-lg">
                             Our organization is dedicated to supporting people with disabilities (PWDs) by providing
@@ -415,7 +415,7 @@ session_start();
 
                     </div>
 
-                    <div class="">
+                    <div class="" id="pwdCardApplications">
                         <h1 class="text-xl md:text-3xl font-bold text-gray-800 mb-2 md:mb-3">PWD Card Application</h1>
                         <p class="leading-loose md:text-lg">
                             We facilitate the PWD card application process, ensuring individuals with disabilities can
