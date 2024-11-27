@@ -1,20 +1,20 @@
 <?php
-    session_start();
-    require '../../include/landing/connect.php';
+session_start();
+require '../../include/landing/connect.php';
 
-    try {
-        $id = $_SESSION['id'];
-        $sql = "SELECT fname, lname, email, contact, dob, usertype, created_at FROM user_registration WHERE id = :id";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([':id' => $id]);
+try {
+    $sql = "Select fname, lname, email contact, dob, usertype, created_at from user_registration";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
 
-        $users = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch a single row
-    } catch(PDOException $e) {
-        echo "There is some problem in connection: " . $e->getMessage();
-    }
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "There is some problem in connection: " . $e->getMessage();
+}
 ?>
 <!doctype html>
 <html>
+
 <head>
     <style>
         #signupSection::-webkit-scrollbar {
@@ -56,26 +56,29 @@
                 </button>
 
                 <!-- Profile picture -->
-                <div  class="group">
-                <a href="../../loginpage.php">
-                    <img class="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt="Profile picture">
-                </a>
+                <div class="group">
+                    <a href="../../loginpage.php">
+                        <img class="h-8 w-8 rounded-full"
+                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="Profile picture">
+                    </a>
 
-                
-                <div
+
+                    <div
                         class="hidden dropdown group-hover:block absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-8">
                         <ul class="p-3 space-y-3">
-                            <li><a href="index.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a>
+                            <li><a href="index.php"
+                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a>
                             </li>
-                            <li><a href="usersetting.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Settings</a>
+                            <li><a href="usersetting.php"
+                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Settings</a>
                             </li>
-                            <li><a href="../../loginpage.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Logout</a>
+                            <li><a href="../../../loginpage.php"
+                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Logout</a>
                             </li>
                         </ul>
                     </div>
-            </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -93,13 +96,13 @@
                 </div>
                 <h1 class="font-bold text-xl">
                     <?php
-                        echo htmlspecialchars($users['fname']) . " " . htmlspecialchars($users['lname']);
+                    echo htmlspecialchars($users[6]['fname']) . " " . htmlspecialchars($users[6]['lname']);
                     ?>
                 </h1>
 
                 <p class="text-gray-700 text-sm">
                     <?php
-                        echo htmlspecialchars($users['usertype']);
+                    echo htmlspecialchars($users[6]['usertype']);
                     ?>
                 </p>
 
@@ -113,7 +116,7 @@
                         <span>Member Since</span>
                         <p>
                             <?php
-                                echo htmlspecialchars($users['created_at']);
+                            echo htmlspecialchars($users[0]['created_at']);
                             ?>
                         </p>
                     </div>
@@ -152,42 +155,118 @@
             </div>
 
             <!-- PWD Card Information and Support -->
-<div class="bg-white p-4 rounded-lg text-left shadow-md">
-    <h2 class="font-bold text-xl text-center">PWD Card Information & Support</h2>
-    <p class="text-gray-700 mt-2">The PWD card provides various benefits and privileges. This section covers everything you need to know about applying, its benefits, and your rights.</p>
+            <div class="bg-white p-4 rounded-lg text-left shadow-md">
+                <h2 class="font-bold text-xl text-center">PWD Card Information & Support</h2>
+                <p class="text-gray-700 mt-2">The PWD card provides various benefits and privileges. This section covers
+                    everything you need to know about applying, its benefits, and your rights.</p>
 
-    <div class="py-2 space-y-2">
-        <a href="benefits_of_pwd_card" class="block text-gray-700 bg-gray-200 px-4 py-2 rounded-xl hover:bg-blue-200 hover:text-black">Explore the Benefits of Having a PWD Card</a>
-        <a href="pwd_card_laws" class="block text-gray-700 bg-gray-200 px-4 py-2 rounded-xl hover:bg-blue-200 hover:text-black">Get Familiar with the Laws and Regulations Around PWD Cards</a>
-        <a href="how_to_apply_for_pwd_card" class="block text-gray-700 bg-gray-200 px-4 py-2 rounded-xl hover:bg-blue-200 hover:text-black">Step-by-Step Guide: How to Apply for a PWD Card</a>
-        <a href="pwd_rights_and_privileges" class="block text-gray-700 bg-gray-200 px-4 py-2 rounded-xl hover:bg-blue-200 hover:text-black">Know Your Rights and Privileges as a PWD Cardholder</a>
-    </div>
-    <p class="mt-4 text-gray-700">If you have questions or need support, please contact us directly at <a href="contact_link" class="text-blue-500 hover:underline">pwdproject@gmail.com</a>, and our team will be happy to assist you.</p>
-</div>
+                <div class="py-2 space-y-2">
+                    <a href="benefits_of_pwd_card"
+                        class="block text-gray-700 bg-gray-200 px-4 py-2 rounded-xl hover:bg-blue-200 hover:text-black">Explore
+                        the Benefits of Having a PWD Card</a>
+                    <a href="pwd_card_laws"
+                        class="block text-gray-700 bg-gray-200 px-4 py-2 rounded-xl hover:bg-blue-200 hover:text-black">Get
+                        Familiar with the Laws and Regulations Around PWD Cards</a>
+                    <a href="how_to_apply_for_pwd_card"
+                        class="block text-gray-700 bg-gray-200 px-4 py-2 rounded-xl hover:bg-blue-200 hover:text-black">Step-by-Step
+                        Guide: How to Apply for a PWD Card</a>
+                    <a href="pwd_rights_and_privileges"
+                        class="block text-gray-700 bg-gray-200 px-4 py-2 rounded-xl hover:bg-blue-200 hover:text-black">Know
+                        Your Rights and Privileges as a PWD Cardholder</a>
+                </div>
+                <p class="mt-4 text-gray-700">If you have questions or need support, please contact us directly at <a
+                        href="contact_link" class="text-blue-500 hover:underline">pwdproject@gmail.com</a>, and our team
+                    will be happy to assist you.</p>
+            </div>
 
         </div>
 
         <!-- Right Column: Welcome, Featured Events, Announcements, and Resources -->
         <div class="bg-white p-6 rounded-lg shadow-lg w-3/5">
             <h1 class="font-bold text-3xl text-center text-blue-800">Welcome to the PWD Community!</h1>
-            <p class="text-gray-800 text-center py-2">Access your personalized dashboard, connect with the community, and explore exclusive resources tailored for you.</p>
+            <p class="text-gray-800 text-center py-2">Discover opportunities, connect with peers, and access valuable
+                resources tailored just for you.</p>
 
 
             <!-- featured events -->
             <div>
-                <div class="w-1/3 border border-gray-100 shadow-lg rounded-md">
+                <div class="mt-6">
+                    <h2 class="font-bold text-xl text-blue-600 border-b-2 pb-2">Featured Events</h2>
 
-                    <img src="featured-pic.jpg" class="rounded-t-md" alt="Picture taken from PWD event">
-                    <div class="py-8 px-6">
-                        <h1 class="text-2xl font-bold text-gray-600">Featured Events</h1>
-                        <span class="text-gray-600 leading-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit consequuntur beatae deleniti
-                            eveniet itaque autem necessitatibus aut, laboriosam sint modi quod. </span>
+                    <div class="grid grid-cols-3  gap-2 py-4">
+                        <!-- event 1 -->
+                        <div class="shadow-lg bg-white rounded-xl overflow-hidden w-full md:w-77 mx-auto">
+                            <!-- Event Image -->
+                            <img src="../../img/events/event1.jpg" alt="Event Image"
+                                class="w-full h-48 rounded-t-xl object-cover object-center">
+
+                            <!-- Event Details -->
+                            <div class="p-4">
+                                <!-- Event Title -->
+                                <h1
+                                    class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-300 cursor-pointer">
+                                    Painting Beyond Limits: A PWD Child's Expression
+                                </h1>
+                                <!-- Event Date -->
+                                <p class="text-sm text-gray-600 mt-2">
+                                    25 June 2024 ───── 27 June 2024
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="shadow-md bg-gray-100 rounded-xl overflow-hidden w-full md:w-77 mx-auto mt-6">
+                            <!-- Event Image -->
+                            <img src="../../img/events/event1.jpg" alt="Event Image"
+                                class="w-full h-48 rounded-t-xl object-cover object-center">
+
+                            <!-- Event Details -->
+                            <div class="p-4">
+                                <!-- Event Title -->
+                                <h1
+                                    class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-300 cursor-pointer">
+                                    Painting Beyond Limits: A PWD Child's Expression
+                                </h1>
+                                <!-- Event Date -->
+                                <p class="text-sm text-right text-gray-600 mt-2">
+                                    25 June 2024 ───── 27 June 2024
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- third event -->
+                        <div class="shadow-lg bg-white rounded-xl overflow-hidden">
+                            <!-- Event Image -->
+                            <img src="../../img/events/event3.jpg" alt="Event Image"
+                                class="w-full h-48 rounded-t-xl object-cover object-center">
+
+                            <!-- Event Details -->
+                            <div class="p-4">
+                                <!-- Event Title -->
+                                <h1
+                                    class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-300 cursor-pointer">
+                                    Empowerment Through Art: PWD Creative Exhibition
+                                </h1>
+                                <!-- Event Date -->
+                                <p class="text-sm text-gray-600 mt-2">
+                                    5 August 2024 ───── 7 August 2024
+                                </p>
+                            </div>
+                        </div>
+
                     </div>
+                    <p class="mt-4 text-center text-gray-700">
+    Want to learn more? Visit our <a href="events_link" class="text-blue-500 hover:underline font-semibold">Events Page</a> for full details and upcoming activities.
+</p>
 
                 </div>
+                <div>
+                    <div>
+
+                    </div>
+                </div>
             </div>
-            <!-- <h2 class="font-bold text-xl text-blue-600 border-b-2 pb-2">Featured Events</h2>
-            <ul class="list-disc list-inside mt-2 text-gray-700 space-y-2">
+
+            <!-- <ul class="list-disc list-inside mt-2 text-gray-700 space-y-2">
                 <li><strong>Annual PWD Awareness Day</strong> - Join us on March 15 for a day of workshops and
                     activities!</li>
                 <li><strong>Scholarship Application Workshop</strong> - Learn how to apply effectively on April 20 at 2
@@ -195,7 +274,7 @@
                 <li><strong>Job Fair</strong> - Connect with employers on May 5 from 10 AM to 4 PM.</li>
             </ul>
             <p class="mt-2 text-center">For more details, visit our <a href="events_link"
-                    class="text-blue-500 hover:underline">Events Page</a>.</p> -->
+                    class="text-blue-500 hover:underline">Events Page</a>.</p>
 
             <h2 class="font-bold text-xl text-blue-600 border-b-2 pb-2">Announcements</h2>
             <p class="text-gray-700">We are excited to announce the launch of our new online resources hub! Check it out
@@ -210,7 +289,7 @@
                 </li>
                 <li><a href="resource_link_3" class="text-blue-500 hover:underline">Transportation Assistance
                         Programs</a></li>
-            </ul>
+            </ul> -->
 
             <!-- User Feedback Section -->
             <div class="mt-6 p-4 bg-blue-50 rounded-lg shadow-md">

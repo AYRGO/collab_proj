@@ -1,8 +1,3 @@
-<?php
-    session_start();
-    $_SESSION['id'] = $id;
-    header("Location: ../../page/user/index.php");
-?>
 <!DOCTYPE html>
 <html>
 
