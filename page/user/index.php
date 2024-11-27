@@ -189,107 +189,92 @@ try {
 
 
             <!-- featured events -->
-            <div>
-                <div class="mt-6">
-                    <h2 class="font-bold text-xl text-blue-600 border-b-2 pb-2">Featured Events</h2>
 
-                    <div class="grid grid-cols-3  gap-2 py-4">
-                        <!-- event 1 -->
-                        <div class="shadow-lg bg-white rounded-xl overflow-hidden w-full md:w-77 mx-auto">
-                            <!-- Event Image -->
-                            <img src="../../img/events/event1.jpg" alt="Event Image"
-                                class="w-full h-48 rounded-t-xl object-cover object-center">
+            <div class="mt-6">
+                <h2 class="font-bold text-xl text-blue-600 border-b-2 pb-2">Featured Events</h2>
 
-                            <!-- Event Details -->
-                            <div class="p-4">
-                                <!-- Event Title -->
-                                <h1
-                                    class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                                    Painting Beyond Limits: A PWD Child's Expression
-                                </h1>
-                                <!-- Event Date -->
-                                <p class="text-sm text-gray-600 mt-2">
-                                    25 June 2024 ───── 27 June 2024
-                                </p>
-                            </div>
+                <div class="grid grid-cols-3  gap-2 py-4">
+                    <!-- event 1 -->
+                    <div class="shadow-lg bg-white rounded-xl overflow-hidden w-full md:w-77 mx-auto">
+                        <!-- Event Image -->
+                        <img src="../../img/events/event1.jpg" alt="Event Image"
+                            class="w-full h-48 rounded-t-xl object-cover object-center">
+
+                        <!-- Event Details -->
+                        <div class="p-4">
+                            <!-- Event Title -->
+                            <h1
+                                class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-300 cursor-pointer">
+                                Painting Beyond Limits: A PWD Child's Expression
+                            </h1>
+                            <!-- Event Date -->
+                            <p class="text-sm text-gray-600 mt-2">
+                                25 June 2024 ───── 27 June 2024
+                            </p>
                         </div>
-
-                        <div class="shadow-md bg-gray-100 rounded-xl overflow-hidden w-full md:w-77 mx-auto mt-6">
-                            <!-- Event Image -->
-                            <img src="../../img/events/event1.jpg" alt="Event Image"
-                                class="w-full h-48 rounded-t-xl object-cover object-center">
-
-                            <!-- Event Details -->
-                            <div class="p-4">
-                                <!-- Event Title -->
-                                <h1
-                                    class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                                    Painting Beyond Limits: A PWD Child's Expression
-                                </h1>
-                                <!-- Event Date -->
-                                <p class="text-sm text-right text-gray-600 mt-2">
-                                    25 June 2024 ───── 27 June 2024
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- third event -->
-                        <div class="shadow-lg bg-white rounded-xl overflow-hidden">
-                            <!-- Event Image -->
-                            <img src="../../img/events/event3.jpg" alt="Event Image"
-                                class="w-full h-48 rounded-t-xl object-cover object-center">
-
-                            <!-- Event Details -->
-                            <div class="p-4">
-                                <!-- Event Title -->
-                                <h1
-                                    class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                                    Empowerment Through Art: PWD Creative Exhibition
-                                </h1>
-                                <!-- Event Date -->
-                                <p class="text-sm text-gray-600 mt-2">
-                                    5 August 2024 ───── 7 August 2024
-                                </p>
-                            </div>
-                        </div>
-
                     </div>
-                    <p class="mt-4 text-center text-gray-700">
-    Want to learn more? Visit our <a href="events_link" class="text-blue-500 hover:underline font-semibold">Events Page</a> for full details and upcoming activities.
-</p>
+
+                    <!-- event 1-2 -->
+                    <div class="shadow-md bg-gray-100 rounded-xl overflow-hidden w-full md:w-77 mx-auto mt-6">
+                        <!-- Event Image -->
+                        <img src="../../img/events/event2.jpg" alt="Event Image"
+                            class="w-full h-48 rounded-t-xl object-cover object-center">
+
+                        <!-- Event Details -->
+                        <div class="p-4">
+                            <!-- Event Title -->
+                            <h1
+                                class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-300 cursor-pointer">
+                                Sports Without Barriers: The PWD Challenge
+                            </h1>
+                            <!-- Event Date -->
+                            <p class="text-sm text-right text-gray-600 mt-2">
+                                25 June 2024 ───── 27 June 2024
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- third event -->
+                    <div class="shadow-lg bg-white rounded-xl overflow-hidden">
+                        <!-- Event Image -->
+                        <img src="../../img/events/event3.jpg" alt="Event Image"
+                            class="w-full h-48 rounded-t-xl object-cover object-center">
+
+                        <!-- Event Details -->
+                        <div class="p-4">
+                            <!-- Event Title -->
+                            <h1
+                                class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-300 cursor-pointer">
+                                Empowerment To Lead: A PWD's Story of Business Success
+                            </h1>
+                            <!-- Event Date -->
+                            <p class="text-sm text-gray-600 mt-2">
+                                5 August 2024 ───── 7 August 2024
+                            </p>
+                        </div>
+                    </div>
 
                 </div>
-                <div>
-                    <div>
+                <p class="mt-4 text-center text-gray-700">
+                    Want to learn more? Visit our <a href="../../announcement.php"
+                        class="text-blue-500 hover:underline font-semibold">Events Page</a> for full details and
+                    upcoming activities.
+                </p>
 
-                    </div>
-                </div>
             </div>
 
-            <!-- <ul class="list-disc list-inside mt-2 text-gray-700 space-y-2">
-                <li><strong>Annual PWD Awareness Day</strong> - Join us on March 15 for a day of workshops and
-                    activities!</li>
-                <li><strong>Scholarship Application Workshop</strong> - Learn how to apply effectively on April 20 at 2
-                    PM.</li>
-                <li><strong>Job Fair</strong> - Connect with employers on May 5 from 10 AM to 4 PM.</li>
-            </ul>
-            <p class="mt-2 text-center">For more details, visit our <a href="events_link"
-                    class="text-blue-500 hover:underline">Events Page</a>.</p>
 
-            <h2 class="font-bold text-xl text-blue-600 border-b-2 pb-2">Announcements</h2>
-            <p class="text-gray-700">We are excited to announce the launch of our new online resources hub! Check it out
-                for guides and tools tailored for PWD members.</p>
-            <p class="text-gray-700">Remember to renew your PWD card before the expiration date to ensure continued
-                access to services.</p>
+            <div class="mt-8 p-6">
+    <h2 class="font-bold text-xl text-blue-600 border-b-2 pb-2">Apply for Your PWD Card</h2>
+    <p class="text-gray-700 mt-4">
+        The PWD (Persons with Disabilities) card offers various benefits including discounts, special services, and more. 
+        If you or someone you know is eligible, you can apply for the card today and gain access to these resources.
+    </p>
+    <a href="../../page/user/pwd_form.php" class="mt-4 block text-blue-500 hover:underline font-semibold">
+        Apply Now
+    </a>
+</div>
 
-            <h2 class="font-bold text-xl text-blue-600 border-b-2 pb-2">Helpful Resources</h2>
-            <ul class="list-disc list-inside mt-2 text-gray-700 space-y-2">
-                <li><a href="resource_link_1" class="text-blue-500 hover:underline">Access to Legal Assistance</a></li>
-                <li><a href="resource_link_2" class="text-blue-500 hover:underline">Mental Health Support Services</a>
-                </li>
-                <li><a href="resource_link_3" class="text-blue-500 hover:underline">Transportation Assistance
-                        Programs</a></li>
-            </ul> -->
 
             <!-- User Feedback Section -->
             <div class="mt-6 p-4 bg-blue-50 rounded-lg shadow-md">
