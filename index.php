@@ -62,6 +62,10 @@
     ?>
 
     <!--hero section  -->
+    <div class="fixed bottom-6 right-8 z-20 flex items-center justify-center bg-blue-950 text-white w-10 h-10 rounded-full shadow-lg cursor-pointer hover:bg-blue-800 transition duration-300">
+        <i class="fa-solid fa-circle-info text-2xl"></i>
+      
+    </div>
     <section class="p-2 m-auto">
         <div class="h-[80vh]  relative ">
             <!-- Image -->
