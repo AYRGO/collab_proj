@@ -46,7 +46,7 @@ try {
     </script>
 </head>
 
-<body>
+<body class="bg-gray-100">
 
 
     <?php
@@ -107,11 +107,16 @@ try {
                 <!-- end of notification icon -->
 
                 <!-- profile icon -->
-                <a href="loginpage.php">
-                    <img class="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt="Profile picture">
-                </a>
+                <div class="group cursor-pointer relative">
+                    <img class="h-8 w-8 rounded-full" id="profileIcon" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Profile picture">
+
+                    <div class="hidden dropdown absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-0" id="dropdownProfile">
+                        <ul class="p-3 space-y-3">
+                            <li><a href="page/user/index.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a></li>
+                            <li><a href="../../include/user/logut.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
                 <!-- end of profile icon -->
             </div>
         </div>
@@ -244,6 +249,13 @@ try {
             upIcon.classList.toggle('hidden');
             downIcon.classList.toggle('hidden');
         });
+
+        const profileIcon = document.getElementById('profileIcon');
+    const dropdownProfile = document.getElementById('dropdownProfile');
+
+    profileIcon.addEventListener('click', () => {
+        dropdownProfile.classList.toggle('hidden');
+    });
     </script>
 </body>
 

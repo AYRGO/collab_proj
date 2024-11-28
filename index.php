@@ -61,21 +61,26 @@
     include 'include/landing/navbar.php';
     ?>
 
-
-    <div class="fixed bottom-6 right-8 z-20 flex items-center justify-center bg-blue-950 text-white w-10 h-10 rounded-full shadow-lg cursor-pointer hover:bg-blue-800 transition duration-300 group"
+    <!-- for the info tool -->
+    <div class="fixed bottom-6 right-6 z-20 flex items-center justify-center bg-blue-950 text-white w-8 h-8 rounded-full shadow-lg cursor-pointer hover:bg-blue-800 transition duration-300 group"
         id="infoTool">
-        <i class="fa-solid fa-circle-info text-2xl"></i>
+        <!-- icon -->
+        <i class="fa-solid fa-circle-info text-xl"></i>
         <div
             class="absolute bottom-12 w-44 right-2 bg-gray-800 text-white text-sm py-2 px-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             Click to see more info
         </div>
-
-
     </div>
-    <div class="hidden z-20 fixed right-8 bottom-6 bg-gray-800 bg-opacity-90 rounded-2xl  p-3 md:p-6 " id="infoContent">
-        <div class="text-left">
+    <!-- content -->
+    <div class="hidden z-20 fixed right-8 bottom-6 bg-gray-800 bg-opacity-90 rounded-2xl  p-3 md:p-6" id="infoContent">
+        
+        <div class="text-left relative">
             <h1 class="text-lg nd:text-2xl font-semibold text-gray-100 mb-2">Opening Hours:</h1>
             <span id="openingHours" class="text-md md:text-lg text-gray-200"></span>
+        </div>
+
+        <div class="absolute top-2 right-4 cursor-pointer" id="closeInfo">
+        <i class="fa-solid fa-x text-gray-100 text-[14px]"></i>
         </div>
         <hr class="w-10/12 border-t-2 border-gray-300 mx-auto my-4">
 
@@ -776,13 +781,17 @@
         document.addEventListener('DOMContentLoaded', () => {
             const infoTool = document.getElementById('infoTool');
             const infoContent = document.getElementById('infoContent');
+            const closeInfo = document.getElementById('closeInfo');
 
             infoTool.addEventListener('click', () => {
                 infoContent.classList.toggle('hidden');
+                infoTool.classList.add('hidden');
             });
-        });
-        document.getElementById('infoTool').addEventListener('click', function () {
-            document.getElementById('infoContent').classList.toggle('hidden');
+
+            closeInfo.addEventListener('click', () => {
+                infoContent.classList.toggle('hidden');
+                infoTool.classList.remove('hidden');
+            });
         });
         // for changing text in testimonialMessage
         const messages = [

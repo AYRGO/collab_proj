@@ -92,11 +92,11 @@ try {
                         <span>Member Since</span>
                         <p>
                             <?php
-                            if ($user) {
-                                echo htmlspecialchars($user['created_at']);
-                            } else {
-                                echo "Not available.";
-                            }
+                                if ($user){
+                                    echo date('F d, Y', strtotime($user['dob']));
+                                } else{
+                                    echo 'User not found!';
+                                }
                             ?>
                         </p>
                     </div>

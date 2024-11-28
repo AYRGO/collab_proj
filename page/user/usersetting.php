@@ -12,11 +12,13 @@ if (!isset($_SESSION['user'])) {
 require '../../include/landing/connect.php';
 
 try {
-    $sql = "SELECT fname, lname, email, contact, dob, usertype, created_at FROM user_registration";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
+    $user_id = $_SESSION['user']['id'];
 
-    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $sql = "SELECT fname, lname, usertype, email, contact, dob, last_login from user_registration WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['id' => $user_id]);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "There is some problem in connection: " . $e->getMessage();
 }
@@ -58,8 +60,24 @@ try {
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt="Profile picture">
                 </div>
-                <h1 class="font-bold text-xl">Jane Doe</h1>
-                <p class="text-gray-700 text-sm">PWD Member</p>
+                <h1 class="font-bold text-xl">
+                    <?php
+                        if ($user){
+                            echo $user['fname'] . ' ' . $user['lname'];
+                        } else{
+                            echo 'User not found!';
+                        }
+                    ?>
+                </h1>
+                <p class="text-gray-700 text-sm">
+                    <?php
+                        if ($user){
+                            echo $user['usertype'];
+                        } else{
+                            echo 'User not found!';
+                        }
+                    ?>
+                </p>
 
                 <div class="text-gray-700 flex flex-col justify-between text-left bg-blue-50 my-2 py-2 px-4 rounded-lg">
                     <div class="flex items-center justify-between">
@@ -73,7 +91,15 @@ try {
 
                     <div class="flex items-center justify-between">
                         <span>Member Since</span>
-                        <p>January 1, 2021</p>
+                        <p>
+                            <?php
+                                if ($user){
+                                    echo date('F d, Y', strtotime($user['dob']));
+                                } else{
+                                    echo 'User not found!';
+                                }
+                            ?>
+                        </p>
                     </div>
 
                     <div class="flex items-center justify-between mt-2">
@@ -149,23 +175,71 @@ try {
                 <div class="grid gap-4 py-3 px-4 text-gray-700">
                     <div class="grid grid-cols-4">
                         <strong class="font-semibold">First Name</strong>
-                        <p>Jane</p>
+                        <p>
+                            <?php
+                                if ($user){
+                                    echo $user['fname'];
+                                } else{
+                                    echo 'User not found!';
+                                }
+                            ?>
+                        </p>
                         <strong class="font-semibold">Last Name</strong>
-                        <p>Doe</p>
+                        <p>
+                            <?php
+                                if ($user){
+                                    echo $user['lname'];
+                                } else{
+                                    echo 'User not found!';
+                                }
+                            ?>
+                        </p>
                     </div>
 
                     <div class="grid grid-cols-4">
                         <strong class="font-semibold">Email Address</strong>
-                        <p>janedoe@gmail.com</p>
+                        <p>
+                            <?php
+                                if ($user){
+                                    echo $user['email'];
+                                } else{
+                                    echo 'User not found!';
+                                }
+                            ?>
+                        </p>
                         <strong class="font-semibold">Contact Number</strong>
-                        <p>0987654321</p>
+                        <p>
+                            <?php
+                                if ($user){
+                                    echo $user['contact'];
+                                } else{
+                                    echo 'User not found!';
+                                }
+                            ?>
+                        </p>
                     </div>
 
                     <div class="grid grid-cols-4">
                         <strong class="font-semibold">Birth Date</strong>
-                        <p>January 01, 2002</p>
-                        <strong class="font-semibold">Sex</strong>
-                        <p>Female</p>
+                        <p>
+                            <?php
+                                if ($user){
+                                    echo date('F d, Y', strtotime($user['dob']));
+                                } else{
+                                    echo 'User not found!';
+                                }
+                            ?>
+                        </p>
+                        <strong class="font-semibold">Last Login</strong>
+                        <p>
+                            <?php
+                                if ($user){
+                                    echo date('F d, Y h:i A', strtotime($user['last_login']));
+                                } else{
+                                    echo 'User not found!';
+                                }
+                            ?>
+                        </p>
                     </div>
                 </div>
 
