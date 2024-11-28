@@ -12,11 +12,16 @@ if (!isset($_SESSION['user'])) {
 require '../../include/landing/connect.php';
 
 try {
-    $sql = "SELECT fname, lname, email, contact, dob, usertype, created_at FROM user_registration";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
+    $user_id = $_SESSION['user']['id'];
 
-    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // Fetch data for the currently logged-in user using the user ID
+    $sql = "SELECT fname, lname, email, contact, dob, usertype, created_at FROM user_registration WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':id' => $user_id]);
+
+    // Fetch the user data (single record)
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);  // This returns a single row
+
 } catch (PDOException $e) {
     echo "There is some problem in connection: " . $e->getMessage();
 }
@@ -59,13 +64,21 @@ try {
                 </div>
                 <h1 class="font-bold text-xl">
                     <?php
-                    echo htmlspecialchars($users['fname']) . " " . htmlspecialchars($users['lname']);
+                    if ($user) {
+                        echo htmlspecialchars($user['fname']) . " " . htmlspecialchars($user['lname']);
+                    } else {
+                        echo "User not found!";
+                    }
                     ?>
                 </h1>
 
                 <p class="text-gray-700 text-sm">
                     <?php
-                    echo htmlspecialchars($users['usertype']);
+                    if ($user) {
+                        echo htmlspecialchars($user['usertype']);
+                    } else {
+                        echo "No user type available.";
+                    }
                     ?>
                 </p>
 
@@ -79,7 +92,11 @@ try {
                         <span>Member Since</span>
                         <p>
                             <?php
-                            echo htmlspecialchars($users[0]['created_at']);
+                            if ($user) {
+                                echo htmlspecialchars($user['created_at']);
+                            } else {
+                                echo "Not available.";
+                            }
                             ?>
                         </p>
                     </div>
@@ -89,7 +106,6 @@ try {
                     </div>
                 </div>
             </div>
-
             <!-- Services Available -->
             <div class="bg-white p-4 rounded-lg text-center shadow-md">
                 <h1 class="font-bold text-xl">Services Available</h1>
