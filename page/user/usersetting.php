@@ -1,6 +1,27 @@
 <?php
-    session_start();
+session_start();
+
+// Check if the user is already logged in
+if (!isset($_SESSION['user'])) {
+    // If the user is not logged in, redirect them to the login page
+    header('Location: ../../loginpage.php');
+    exit(); // Ensure no further code execution after the redirect
+}
+
+// If the user is logged in, continue with fetching the data
+require '../../include/landing/connect.php';
+
+try {
+    $sql = "SELECT fname, lname, email, contact, dob, usertype, created_at FROM user_registration";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "There is some problem in connection: " . $e->getMessage();
+}
 ?>
+
 <!doctype html>
 <html>
 
