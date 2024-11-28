@@ -59,9 +59,9 @@ if (isset($_SESSION['user'])) {
             <h5 class="text-md">Log in to your account</h5>
 
             <form action="login.php" method="POST" class="my-8 md:my-16 w-full">
-                <input type="email"
+                <input type="text"
                     class="w-full border border-gray-400 p-5 rounded-lg outline-blue-800 bg-white mb-5 placeholder:text-lg"
-                    name="email" id="email" placeholder="Email" required autofocus>
+                    name="login" id="login" placeholder="Email" required autofocus>
                 <input type="password"
                     class="w-full border border-gray-400 p-5 rounded-lg outline-blue-800 bg-white mb-5 placeholder:text-lg"
                     name="password" id="password" placeholder="Password" required>
