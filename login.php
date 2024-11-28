@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'include/landing/connect.php';
 
 session_start(); 
