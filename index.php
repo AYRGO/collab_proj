@@ -773,7 +773,15 @@
         }
 
         // for the info icon
-        document.getElementById('infotool').addEventListener('click', function () {
+        document.addEventListener('DOMContentLoaded', () => {
+            const infoTool = document.getElementById('infoTool');
+            const infoContent = document.getElementById('infoContent');
+
+            infoTool.addEventListener('click', () => {
+                infoContent.classList.toggle('hidden');
+            });
+        });
+        document.getElementById('infoTool').addEventListener('click', function () {
             document.getElementById('infoContent').classList.toggle('hidden');
         });
         // for changing text in testimonialMessage

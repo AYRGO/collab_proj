@@ -59,13 +59,13 @@ try {
                 </div>
                 <h1 class="font-bold text-xl">
                     <?php
-                    echo htmlspecialchars($users[6]['fname']) . " " . htmlspecialchars($users[6]['lname']);
+                    echo htmlspecialchars($users['fname']) . " " . htmlspecialchars($users['lname']);
                     ?>
                 </h1>
 
                 <p class="text-gray-700 text-sm">
                     <?php
-                    echo htmlspecialchars($users[6]['usertype']);
+                    echo htmlspecialchars($users['usertype']);
                     ?>
                 </p>
 
