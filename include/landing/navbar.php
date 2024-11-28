@@ -57,6 +57,8 @@
         <!-- right section (icons) -->
 
         <div class="flex items-center gap-2">
+            <button class="px-6 py-3 text-gray-900 font-semibold bg-gray-200 rounded-md hover:bg-gray-400 hover:text-white">Get Started</button>
+            <div class="flex items-center gap-2">
             <button
                 class=" rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -66,18 +68,12 @@
                 </svg>
             </button>
 
-            <!-- Profile dropdown -->
-            <div  class="group cursor-pointer">
+              <!-- Profile dropdown -->
+              <div  class="group cursor-pointer">
                     <img class="h-8 w-8 rounded-full" id="profileIcon"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt="Profile picture">
               
-                <!-- <a href="loginpage.php">
-                    <img class="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt="Profile picture">
-                </a> -->
-
                 
                 <div
                         class="hidden dropdown absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-8" id="dropdownProfile">
@@ -91,6 +87,10 @@
                         </ul>
                     </div>
             </div>
+            </div>
+             
+
+          
         </div>
     </div>
 </nav>
