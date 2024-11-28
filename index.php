@@ -61,11 +61,40 @@
     include 'include/landing/navbar.php';
     ?>
 
-    <!--hero section  -->
-    <div class="fixed bottom-6 right-8 z-20 flex items-center justify-center bg-blue-950 text-white w-10 h-10 rounded-full shadow-lg cursor-pointer hover:bg-blue-800 transition duration-300">
+
+    <div class="fixed bottom-6 right-8 z-20 flex items-center justify-center bg-blue-950 text-white w-10 h-10 rounded-full shadow-lg cursor-pointer hover:bg-blue-800 transition duration-300 group"
+        id="infoTool">
         <i class="fa-solid fa-circle-info text-2xl"></i>
-      
+        <div
+            class="absolute bottom-12 w-44 right-2 bg-gray-800 text-white text-sm py-2 px-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Click to see more info
+        </div>
+
+
     </div>
+    <div class="hidden z-20 fixed right-8 bottom-6 bg-gray-800 bg-opacity-90 rounded-2xl  p-3 md:p-6 " id="infoContent">
+        <div class="text-left">
+            <h1 class="text-lg nd:text-2xl font-semibold text-gray-100 mb-2">Opening Hours:</h1>
+            <span id="openingHours" class="text-md md:text-lg text-gray-200"></span>
+        </div>
+        <hr class="w-10/12 border-t-2 border-gray-300 mx-auto my-4">
+
+        <div class="text-left">
+            <h1 class="text-lg nd:text-2xl font-semibold text-gray-100 mb-2">Located At:</h1>
+            <span class="text-md md:text-lg text-gray-200">Bacolor, Pampanga</span>
+        </div>
+
+        <hr class="w-10/12 border-t-2 border-gray-300 mx-auto my-4">
+        <div class="text-left">
+            <h1 class="text-lg nd:text-2xl font-semibold text-gray-100 mb-2">Get Directions:</h1>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123300.38624539529!2d120.55341713439601!3d15.040532873113833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396f625d57350d9%3A0xc1bb51cbb60c9f50!2sBacolor%20Municipal%20Hall!5e0!3m2!1sen!2sph!4v1731505480965!5m2!1sen!2sph"
+                width="170" height="150" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+    <!--hero section  -->
     <section class="p-2 m-auto">
         <div class="h-[80vh]  relative ">
             <!-- Image -->
@@ -95,11 +124,12 @@
                                     echo '<a href="#" onclick="alertLogin()">';
                                 }
                                 ?>
-                                <div class="text-white flex items-center gap-3 cursor-pointer group-hover:text-blue-400 transition duration-300 transform group-hover:scale-105">
-                                <h1 class="font-semibold">Apply for PWD Card</h1>
-                                <span class="material-symbols-outlined text-sm">north_east</span>
+                                <div
+                                    class="text-white flex items-center gap-3 cursor-pointer group-hover:text-blue-400 transition duration-300 transform group-hover:scale-105">
+                                    <h1 class="font-semibold">Apply for PWD Card</h1>
+                                    <span class="material-symbols-outlined text-sm">north_east</span>
                                 </div>
-                              
+
                                 </a>
                             </div>
                             <!-- horizontal line under the apply now -->
@@ -127,28 +157,7 @@
             </div>
             <!--end of gradient  -->
 
-            <!-- right lower side section -->
-            <div class="hidden absolute right-0 bottom-0 bg-white rounded-tl-2xl  p-3 md:p-6 ">
-                <div class="text-left">
-                    <h1 class="text-lg nd:text-2xl font-semibold text-blue-800 mb-2">Opening Hours:</h1>
-                    <span id="openingHours" class="text-md md:text-lg"></span>
-                </div>
-                <hr class="w-10/12 border-t-2 border-gray-300 mx-auto my-4">
 
-                <div class="text-left">
-                    <h1 class="text-lg nd:text-2xl font-semibold text-blue-800 mb-2">Located At:</h1>
-                    <span class="text-md md:text-lg">Bacolor, Pampanga</span>
-                </div>
-
-                <hr class="w-10/12 border-t-2 border-gray-300 mx-auto my-4">
-                <div class="text-left">
-                    <h1 class="text-lg nd:text-2xl font-semibold text-blue-800 mb-2">Get Directions:</h1>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123300.38624539529!2d120.55341713439601!3d15.040532873113833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396f625d57350d9%3A0xc1bb51cbb60c9f50!2sBacolor%20Municipal%20Hall!5e0!3m2!1sen!2sph!4v1731505480965!5m2!1sen!2sph"
-                        width="170" height="150" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
 
 
         </div>
@@ -758,10 +767,15 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         // for the login alert
-        function alertLogin(){
+        function alertLogin() {
             alert('Please sign in first to apply for a PWD card.');
             window.location.href = 'loginpage.php';
         }
+
+        // for the info icon
+        document.getElementById('infotool').addEventListener('click', function () {
+            document.getElementById('infoContent').classList.toggle('hidden');
+        });
         // for changing text in testimonialMessage
         const messages = [
             "Thanks to the PWD services, I can now participate in community events and activities that I once missed. The support has provided me with the tools and resources I need to thrive.",

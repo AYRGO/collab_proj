@@ -63,7 +63,7 @@ session_start();
                         <ul class="p-3 space-y-3">
                             <li><a href="page/user/index.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a></li>
                             <li><a href="page/user/usersetting.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Settings</a></li>
-                            <li><a href="logout.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a></li>
+                            <li><a href="loginpage.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a></li>
                         </ul>
                     </div>
                 </div>
