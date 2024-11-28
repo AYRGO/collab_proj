@@ -2,7 +2,6 @@
 session_start();
 require 'include/landing/connect.php';
 
-session_start(); 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $login = trim($_POST['login']); 
@@ -32,8 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
               
                 if (isset($user['user_type']) && $user['user_type'] === 'admin') {
+                    $_SESSION['admin'] = $user;
                     header('Location: page/admin/index.php');
                 } else {
+                    $_SESSION['user'] = $user;
                     header('Location: page/user/index.php');
                 }
                 exit(); 
