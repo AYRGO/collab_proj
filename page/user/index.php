@@ -1,27 +1,44 @@
 <?php
-session_start();
-
-// Check if the user is already logged in
-if (!isset($_SESSION['user'])) {
-    // If the user is not logged in, redirect them to the login page
-    header('Location: ../../loginpage.php');
-    exit(); // Ensure no further code execution after the redirect
-}
+session_start(); // Ensure the session is started
 
 // If the user is logged in, continue with fetching the data
 require '../../include/landing/connect.php';
 
 try {
-    $user_id = $_SESSION['user']['id'];
+    if (isset($_SESSION['user']['id'])) {
+        $user_id = $_SESSION['user']['id'];
 
-    // Fetch data for the currently logged-in user using the user ID
-    $sql = "SELECT fname, lname, email, contact, dob, usertype, created_at FROM user_registration WHERE id = :id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([':id' => $user_id]);
+        // Fetch data for the currently logged-in user using the user ID
+        $sql = "SELECT id, fname, lname, email, contact, dob, usertype, created_at FROM user_registration WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':id' => $user_id]);
 
-    // Fetch the user data (single record)
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);  // This returns a single row
+        // Fetch the user data (single record)
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);  // This returns a single row
 
+        // for the feedback
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            if (!empty($_POST['feedback'])) {
+                $feedback = $_POST['feedback'];
+
+                $sql = "INSERT INTO user_feedback (user_id, fname, lname, feedback) VALUES (:user_id, :fname, :lname, :feedback)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([
+                    ':user_id' => $user['id'],
+                    ':fname' => $user['fname'],
+                    ':lname' => $user['lname'],
+                    ':feedback' => $feedback
+                ]);
+
+                echo "<script>alert('Feedback submitted successfully!');
+                        window.location.href = '" . $_SERVER['PHP_SELF'] . "';
+                     </script>";
+                exit();
+            }
+        }
+    } else {
+        echo "User is not logged in.";
+    }
 } catch (PDOException $e) {
     echo "There is some problem in connection: " . $e->getMessage();
 }
@@ -173,9 +190,9 @@ try {
             <div class="mt-6">
                 <h2 class="font-bold text-xl text-blue-600 border-b-2 pb-2">Featured Events</h2>
 
-                <div class="grid grid-cols-3  gap-2 py-4">
+                <div class="grid grid-cols-3  gap-4 py-4">
                     <!-- event 1 -->
-                    <div class="shadow-lg bg-white rounded-xl overflow-hidden w-full md:w-77 mx-auto">
+                    <div class="shadow-lg bg-white rounded-xl overflow-hidden w-full md:w-77 mx-auto transition duration-300 ease-in-out hover:scale-105 cursor-pointer">
                         <!-- Event Image -->
                         <img src="../../img/events/event1.jpg" alt="Event Image"
                             class="w-full h-48 rounded-t-xl object-cover object-center">
@@ -194,8 +211,8 @@ try {
                         </div>
                     </div>
 
-                    <!-- event 1-2 -->
-                    <div class="shadow-md bg-gray-100 rounded-xl overflow-hidden w-full md:w-77 mx-auto mt-6">
+                    <!-- event 2 -->
+                    <div class="shadow-md bg-gray-100 rounded-xl overflow-hidden w-full md:w-77 mx-auto mt-6 transition duration-300 ease-in-out hover:scale-105 cursor-pointer">
                         <!-- Event Image -->
                         <img src="../../img/events/event2.jpg" alt="Event Image"
                             class="w-full h-48 rounded-t-xl object-cover object-center">
@@ -215,7 +232,7 @@ try {
                     </div>
 
                     <!-- third event -->
-                    <div class="shadow-lg bg-white rounded-xl overflow-hidden">
+                    <div class="shadow-lg bg-white rounded-xl overflow-hidden transition duration-300 ease-in-out hover:scale-105 cursor-pointer">
                         <!-- Event Image -->
                         <img src="../../img/events/event3.jpg" alt="Event Image"
                             class="w-full h-48 rounded-t-xl object-cover object-center">
@@ -263,9 +280,12 @@ try {
                 <h2 class="font-bold text-xl text-blue-600">We Value Your Feedback!</h2>
                 <p class="text-gray-700">Please take a moment to let us know your thoughts about our services and
                     events:</p>
-                <textarea class="w-full mt-2 p-2 border border-gray-300 rounded-lg" rows="4"
+                <form method="POST">
+                <textarea class="w-full mt-2 p-2 border border-gray-300 rounded-lg" rows="4" name="feedback"
                     placeholder="Your feedback..."></textarea>
                 <button class="mt-2 bg-blue-600 text-white py-2 px-4 rounded-lg">Submit Feedback</button>
+                </form>
+               
             </div>
         </div>
     </div>
