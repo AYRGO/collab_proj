@@ -20,18 +20,27 @@ try {
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $sql = "UPDATE user_registration (fname, lname, email, contact, dob) VALUES (:fname, :lname, :email, :contact, :dob) WHERE id = :id";
-    $stmt = $pdo->prepare($sql);
-    $stmt -> execute([
-        ':fname' => $_POST['fname'],
-        ':lname' => $_POST['lname'],
-        ':email' => $_POST['email'],
-        ':contact' => $_POST['contact'],
-        ':dob' => $_POST['dob'],
-        ":id" => $_POST['id']
-    ]);
+    if ($_SERVER["REQUEST_METHOD"] === 'POST'){
+        $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
+        $email = $_POST['email'];
+        $contact = $_POST['contact'];
+        $dob = $_POST['dob'];
 
-    header('Location: usersetting.php');
+        $sql = "UPDATE user_registration set fname = :fname, lname = :lname, email = :email, contact = :contact, dob = :dob WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt -> execute([
+            ':fname' => $_POST['fname'],
+            ':lname' => $_POST['lname'],
+            ':email' => $_POST['email'],
+            ':contact' => $_POST['contact'],
+            ':dob' => $_POST['dob'],
+            ":id" => $user_id
+        ]);
+    
+        header('Location: usersetting.php');
+    }
+
 } catch (PDOException $e) {
     echo "There is some problem in connection: " . $e->getMessage();
 }
@@ -520,7 +529,7 @@ try {
                 <!-- close button -->
                 <i class="absolute -right-2 -top-2 fa-solid fa-circle-xmark text-3xl md:text-4xl text-blue-900 cursor-pointer hover:text-blue-700 active:text-blue-600"
                     id="closeBtn"></i>
-                <form action="usersetting.php" method="POSt" class="my-4">
+                <form action="" method="POST" class="my-4">
                     <!-- for full name -->
                     <div class="lg:flex lg:justify-between gap-12">
                         <div class="w-full">

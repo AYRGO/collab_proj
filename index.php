@@ -110,7 +110,7 @@
             <div
                 class="absolute inset-0 bg-gradient-to-r md:h-full from-blue-950 via-transparent to-transparent rounded-lg flex items-center ">
                 <div class="pl-8 flex flex-col w-10/12 md:w-1/2">
-                    <h1 class="text-white text-xl md:text-4xl lg:text-5xl font-extrabold uppercase md:leading-snug">
+                    <h1 class="text-white text-xl md:text-4xl lg:text-5xl font-extrabold uppercase md:leading-snug lg:leading-2">
                         Empowering Lives: Support For Persons with Disabilities
                     </h1>
                     <p class="mt-4 w-full sm:w-3/4 md:w-2/3 text-white">
