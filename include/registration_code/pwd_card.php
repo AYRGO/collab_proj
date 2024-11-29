@@ -33,9 +33,18 @@ function isReferenceIdUnique($pdo, $reference_id)
 }
 try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Ensure user is logged in
+        if (!isset($_SESSION['user'])) {
+            echo "User not logged in!";
+            exit;
+        }
+
         do {
             $reference_id = generateReferenceId();
         } while (!isReferenceIdUnique($pdo, $reference_id));
+
+        // Get user id from session
+        $user_id = $_SESSION['user']['id']; // Assuming 'user' session contains the logged-in user's details
 
         $application_type = $_POST['application_type'];
         $fname = trim($_POST['fname']);
@@ -49,38 +58,29 @@ try {
         $disability = $_POST['disability'];
         $cause = $_POST['cause'];
 
-        // for the file upload
+        // File upload handling
         $medicalcert = null;
         $valid_id = null;
         $photo = null;
 
-        // for the guardian
-        $guardian_name = trim($_POST['guardian_name']);
-        $guardian_relationship = $_POST['guardian_relationship'];
-        $guardian_contact = $_POST['guardian_contact'];
-
-        // check if the file is uploaded and there is no error
         if (isset($_FILES['medicalcert']) && $_FILES['medicalcert']['error'] === UPLOAD_ERR_OK) {
-            // get the file name
             $medicalcert = 'uploads/' . basename($_FILES['medicalcert']['name']);
-            // move the file to the specified path
             move_uploaded_file($_FILES['medicalcert']['tmp_name'], $medicalcert);
         }
 
-        // for the valid id
         if (isset($_FILES['valid_id']) && $_FILES['valid_id']['error'] === UPLOAD_ERR_OK) {
             $valid_id = 'uploads/' . basename($_FILES['valid_id']['name']);
             move_uploaded_file($_FILES['valid_id']['tmp_name'], $valid_id);
         }
 
-        // for the photo
         if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
             $photo = 'uploads/' . basename($_FILES['photo']['name']);
             move_uploaded_file($_FILES['photo']['tmp_name'], $photo);
         }
 
-        $sql = "INSERT INTO pwdcard_applications(reference_id, application_type, fname, mname, lname, dob, sex, civil_status, address, contact, disability, cause, medicalcert, valid_id, photo) 
-                    VALUES(:reference_id, :application_type, :fname, :mname, :lname, :dob, :sex, :civil_status, :address, :contact, :disability, :cause, :medicalcert, :valid_id, :photo)";
+        // Insert into pwdcard_applications table
+        $sql = "INSERT INTO pwdcard_applications(reference_id, application_type, fname, mname, lname, dob, sex, civil_status, address, contact, disability, cause, medicalcert, valid_id, photo, user_id) 
+                VALUES(:reference_id, :application_type, :fname, :mname, :lname, :dob, :sex, :civil_status, :address, :contact, :disability, :cause, :medicalcert, :valid_id, :photo, :user_id)";
         $stmt = $pdo->prepare($sql);
 
         $stmt->execute([
@@ -98,23 +98,27 @@ try {
             ':cause' => $cause,
             ':medicalcert' => $medicalcert,
             ':valid_id' => $valid_id,
-            ':photo' => $photo
+            ':photo' => $photo,
+            ':user_id' => $user_id // Insert the current user ID
         ]);
 
-        // for the guardian
+        // Get the last inserted ID for the guardian
         $pwd_application_id = $pdo->lastInsertId();
 
-        $guardianSql = "INSERT INTO guardians(pwd_application_id, guardian_name, guardian_relationship, guardian_contact)
-                            VALUES (:pwd_application_id, :guardian_name, :guardian_relationship, :guardian_contact)";
-        $stmt = $pdo->prepare($guardianSql);
+        // Insert guardian details
+        $guardian_name = trim($_POST['guardian_name']);
+        $guardian_relationship = $_POST['guardian_relationship'];
+        $guardian_contact = $_POST['guardian_contact'];
 
+        $guardianSql = "INSERT INTO guardians(pwd_application_id, guardian_name, guardian_relationship, guardian_contact)
+                        VALUES (:pwd_application_id, :guardian_name, :guardian_relationship, :guardian_contact)";
+        $stmt = $pdo->prepare($guardianSql);
         $stmt->execute([
             ':pwd_application_id' => $pwd_application_id,
             ':guardian_name' => $guardian_name,
             ':guardian_relationship' => $guardian_relationship,
             ':guardian_contact' => $guardian_contact
         ]);
-
         // Send an email using PHPMailer
         $mail = new PHPMailer(true);
 
