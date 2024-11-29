@@ -40,7 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 exit(); 
             } else {
                 
-                echo "Invalid email or password!";
+                echo "<script>
+                        alert('Invalid email or password. Please try again.');
+                        window.location.href = 'loginpage.php';
+                      </script>";
             }
         } else {
    

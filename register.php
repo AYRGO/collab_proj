@@ -67,8 +67,15 @@ try {
                 // Content
                 $mail->isHTML(true);
                 $mail->Subject = 'Email Verification';
-                $mail->Body    = "Hi $fname, <br><br> Please click the link below to verify your email address <br><br> 
-                                  <a href='http://localhost/collab_proj/verification.php?email=$email&token=$token'>Verify Email</a>";
+                $mail->Body    = "
+                Dear $fname, <br><br>
+                We are pleased to inform you that your account registration is nearly complete. In order to finalize the process, please verify your email address by clicking the link below: <br><br>
+                <a href='http://localhost/collab_proj/verification.php?email=$email&token=$token' style='color: #1a73e8; text-decoration: none;'>Verify Your Email Address</a><br><br>
+                If you did not create an account with us, please disregard this email.<br><br>
+                Best regards, <br>
+                The PWD Project Team
+            ";
+            
 
                 $mail->send();
                 $_SESSION['message'] = "Registration successful! Please verify your email address.";

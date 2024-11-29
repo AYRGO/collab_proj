@@ -26,10 +26,14 @@ if (isset($_GET['token'])) {
 
                 if ($updateStmt->execute([':id' => $user['id']])) {
                     // Inform the user of successful verification
-                    echo "Your account has been successfully verified! You will be redirected to the login page.";
+                    $message = "Your account has been successfully verified! You will be redirected to the login page.";
+
+                    echo "<script>
+                        alert('$message');
+                    </script>";
                     
                     // Redirect to login page after 3 seconds
-                    header("Refresh: 3; url=loginpage.php"); 
+                    header("Refresh: 1; url=loginpage.php"); 
                     exit; // Make sure no further code is executed after redirection
                 } else {
                     // Error in the update query
@@ -47,7 +51,6 @@ if (isset($_GET['token'])) {
 }
 ?>
 
-
 <!doctype html>
 <head>
     <meta charset="UTF-8">
@@ -58,30 +61,29 @@ if (isset($_GET['token'])) {
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
-    
-    <div class="max-w-2xl mx-auto">
-        <div class="flex justify-center items-center h-screen text-gray-700">
-            <div class="bg-white p-10 rounded-lg shadow-lg flex flex-col items-center justify-center text-center">
-                <div class="w-20 h-20 border-2 border-blue-800 rounded-full flex items-center justify-center mb-8">
-                <i class="fa-regular fa-envelope text-blue-900 text-3xl"></i>
+<body class="bg-gradient-to-r from-blue-50 to-gray-200 font-sans">
+
+    <div class="max-w-lg mx-auto">
+        <div class="flex justify-center items-center h-screen text-gray-800">
+            <div class="bg-white p-10 rounded-lg shadow-lg transform transition-all hover:shadow-2xl">
+                <div class="w-20 h-20 border-4 border-indigo-600 rounded-full flex items-center justify-center mb-8 mx-auto">
+                    <i class="fa-regular fa-envelope text-indigo-700 text-3xl"></i>
                 </div>
 
                 <div>
-                    <h1 class="font-semibold text-2xl capitalize text-gray-800 mb-4">Verify your email address</h1>
-                    <hr class="w-3/4 border-t border-gray-300 mx-auto py-4">
+                    <h1 class="font-semibold text-3xl text-center text-gray-800 mb-6">Verify Your Email Address</h1>
+                    <p class="text-center text-lg text-gray-600 mb-6">To complete your registration, please verify your email address by clicking the link we sent to your inbox.</p>
 
-                    <p class="mb-4">In order to complete your registration, please verify your email address by clicking the link we sent to your email.</p>
-
-                    <a href="https://gmail.com/">
-                        <button class="bg-blue-800 text-white px-4 py-2 rounded-md hover:bg-blue-900">Verify Email Address</button>
+                    <a href="https://gmail.com/" class="block text-center">
+                        <button class="bg-indigo-600 text-white px-6 py-3 rounded-md text-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-300 transform hover:scale-105">
+                            Verify Email Address
+                        </button>
                     </a>
-                    <hr>
+                    <hr class="my-6 border-gray-300">
 
-                    <p>
+                    <p class="text-center text-sm text-gray-500">
                         If you did not create an account, please ignore this email.
                     </p>
-                    
                 </div>
             </div>
         </div>
