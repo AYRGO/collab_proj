@@ -45,7 +45,7 @@ session_start();
         <div class="flex items-center gap-2">
             <?php if (!isset($_SESSION['user'])): ?>
                 <a href="loginpage.php">
-                    <button class="px-6 py-3 text-gray-900 font-semibold bg-gray-200 rounded-md hover:bg-gray-400 hover:text-white">Get Started</button>
+                    <button class="px-6 py-3 text-gray-900 font-semibold bg-gray-200 rounded-md hover:bg-gray-400 hover:text-white">Sign Up</button>
                 </a>
             <?php else: ?>
                 <!-- when the user is already logged in -->

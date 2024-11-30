@@ -109,12 +109,17 @@ try {
 
                 <!-- profile icon -->
                 <div class="group cursor-pointer relative">
-                    <img class="h-8 w-8 rounded-full" id="profileIcon" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Profile picture">
+                    <img class="h-8 w-8 rounded-full" id="profileIcon"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt="Profile picture">
 
-                    <div class="hidden dropdown absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-0" id="dropdownProfile">
+                    <div class="hidden dropdown absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-0"
+                        id="dropdownProfile">
                         <ul class="p-3 space-y-3">
-                            <li><a href="page/user/index.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a></li>
-                            <li><a href="../../include/user/logut.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a></li>
+                            <li><a href="page/user/index.php"
+                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a></li>
+                            <li><a href="../../include/user/logut.php"
+                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -131,8 +136,8 @@ try {
                     <div>
                         <h1 class="">Total Registered Account</h1>
                         <span class="text-3xl font-semibold text-gray-800"><?php
-                                                                            echo $totalRegisteredAccount;
-                                                                            ?></span>
+                        echo $totalRegisteredAccount;
+                        ?></span>
                     </div>
 
                     <div
@@ -158,8 +163,8 @@ try {
                     <div>
                         <h1 class="">Total Approved PWD Card</h1>
                         <span class="text-3xl font-semibold text-gray-800"><?php
-                                                                            echo $totalApprovedPwdCard;
-                                                                            ?></span>
+                        echo $totalApprovedPwdCard;
+                        ?></span>
                     </div>
 
                     <div
@@ -185,8 +190,8 @@ try {
                     <div>
                         <h1 class="">Total Pending PWD Card</h1>
                         <span class="text-3xl font-semibold text-gray-800"><?php
-                                                                            echo $totalPendingCard;
-                                                                            ?></span>
+                        echo $totalPendingCard;
+                        ?></span>
                     </div>
 
 
@@ -214,8 +219,8 @@ try {
                     <div>
                         <h1 class="">Total PWD Card Renewals</h1>
                         <span class="text-3xl font-semibold text-gray-800"><?php
-                                                                            echo $totalRenewalCard;
-                                                                            ?></span>
+                        echo $totalRenewalCard;
+                        ?></span>
                     </div>
 
                     <div
@@ -233,20 +238,23 @@ try {
 
                 <p class="mt-2"><span class="text-green-500 font-semibold">+10%</span> than last month</p>
             </div>
-
-            <div class="inline flex space-x-10">
-                <div class ="w-[400px]">
-                <canvas id="myfchart" width="400" height="400"></canvas>
-                <script src="src/js/myFchart.js"></script>
+            <div class="grid grid-cols-3 gap-[55vh]">
+            <div class="w-3/4 mt-10">
+                    <canvas id="myschart" width="400" height="600"></canvas>
+                    <script src="src/js/mySchart.js"></script>
                 </div>
-                <div class ="w-[320px] mt-10">
-                <canvas id="myschart" width="400" height="400"></canvas>
-                <script src="src/js/mySchart.js"></script>
+                <div class="1/4">
+                    <div class="h-[600px]">
+                    <canvas id="myfchart" class="w-full h-full"></canvas>
+                    <script src="src/js/myFchart.js"></script>
                 </div>
-                <div class ="w-[360px] mt-10">
-                <canvas id="mytchart" width="400" height="400"></canvas>
-                <script src="src/js/myTchart.js"></script>
+                
+                <div class="h-[600px] mt-10">
+                    <canvas id="mytchart" class="w-full h-full"></canvas>
+                    <script src="src/js/myTchart.js"></script>
                 </div>
+                </div>
+                
             </div>
 
 
