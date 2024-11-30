@@ -32,6 +32,7 @@ try {
     <link rel="icon" href="../../img/logo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="../../node_modules/chart.js/dist/chart.umd.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -50,8 +51,8 @@ try {
 
 
     <?php
-        $page = 'dashboard';
-        include '../../include/admin/sidebar.php';
+    $page = 'dashboard';
+    include '../../include/admin/sidebar.php';
     ?>
     <!-- end of side bar -->
 
@@ -130,8 +131,8 @@ try {
                     <div>
                         <h1 class="">Total Registered Account</h1>
                         <span class="text-3xl font-semibold text-gray-800"><?php
-                        echo $totalRegisteredAccount;
-                        ?></span>
+                                                                            echo $totalRegisteredAccount;
+                                                                            ?></span>
                     </div>
 
                     <div
@@ -157,8 +158,8 @@ try {
                     <div>
                         <h1 class="">Total Approved PWD Card</h1>
                         <span class="text-3xl font-semibold text-gray-800"><?php
-                        echo $totalApprovedPwdCard;
-                        ?></span>
+                                                                            echo $totalApprovedPwdCard;
+                                                                            ?></span>
                     </div>
 
                     <div
@@ -184,8 +185,8 @@ try {
                     <div>
                         <h1 class="">Total Pending PWD Card</h1>
                         <span class="text-3xl font-semibold text-gray-800"><?php
-                        echo $totalPendingCard;
-                        ?></span>
+                                                                            echo $totalPendingCard;
+                                                                            ?></span>
                     </div>
 
 
@@ -213,8 +214,8 @@ try {
                     <div>
                         <h1 class="">Total PWD Card Renewals</h1>
                         <span class="text-3xl font-semibold text-gray-800"><?php
-                        echo $totalRenewalCard;
-                        ?></span>
+                                                                            echo $totalRenewalCard;
+                                                                            ?></span>
                     </div>
 
                     <div
@@ -232,6 +233,23 @@ try {
 
                 <p class="mt-2"><span class="text-green-500 font-semibold">+10%</span> than last month</p>
             </div>
+
+            <div class="inline flex space-x-10">
+                <div class ="w-[400px]">
+                <canvas id="myfchart" width="400" height="400"></canvas>
+                <script src="src/js/myFchart.js"></script>
+                </div>
+                <div class ="w-[320px] mt-10">
+                <canvas id="myschart" width="400" height="400"></canvas>
+                <script src="src/js/mySchart.js"></script>
+                </div>
+                <div class ="w-[360px] mt-10">
+                <canvas id="mytchart" width="400" height="400"></canvas>
+                <script src="src/js/myTchart.js"></script>
+                </div>
+            </div>
+
+
         </div>
     </div>
 
@@ -251,11 +269,11 @@ try {
         });
 
         const profileIcon = document.getElementById('profileIcon');
-    const dropdownProfile = document.getElementById('dropdownProfile');
+        const dropdownProfile = document.getElementById('dropdownProfile');
 
-    profileIcon.addEventListener('click', () => {
-        dropdownProfile.classList.toggle('hidden');
-    });
+        profileIcon.addEventListener('click', () => {
+            dropdownProfile.classList.toggle('hidden');
+        });
     </script>
 </body>
 
