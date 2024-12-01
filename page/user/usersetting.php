@@ -27,7 +27,7 @@ try {
         $contact = $_POST['contact'];
         $dob = $_POST['dob'];
 
-        $sql = "UPDATE user_registration set fname = :fname, lname = :lname, email = :email, contact = :contact, dob = :dob WHERE id = :id";
+        $sql = "UPDATE user_registration set fname = :fname, lname = :lname, email = :email, contact = :contact, dob = :dob, last_login = NOW() WHERE id = :id";
         $stmt = $pdo->prepare($sql);
         $stmt -> execute([
             ':fname' => $_POST['fname'],
@@ -37,8 +37,8 @@ try {
             ':dob' => $_POST['dob'],
             ":id" => $user_id
         ]);
-    
         header('Location: usersetting.php');
+   
     }
 
 } catch (PDOException $e) {

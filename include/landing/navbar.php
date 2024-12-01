@@ -2,7 +2,7 @@
 session_start();
 
 ?>
-<nav class="bg-blue-900 sticky top-0 left-0 right-0 z-30 py-2 px-6">
+<nav class="bg-blue-900 sticky top-0 left-0 right-0 z-50 py-2 px-6">
     <div class="flex items-center justify-between">
         <!-- left section (logo with title) -->
         <div class="flex flex-shrink-0 items-center">

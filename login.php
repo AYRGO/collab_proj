@@ -29,6 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (password_verify($password, $user['password'])) {
                 $_SESSION['user'] = $user;  
 
+                // update the last_login field
+                if (isset($user['id'])){
+                    $sql = "UPDATE user_registration SET last_login = NOW() where id = :id";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute([':id' => $user['id']]);
+                }
               
                 if (isset($user['user_type']) && $user['user_type'] === 'admin') {
                     $_SESSION['admin'] = $user;

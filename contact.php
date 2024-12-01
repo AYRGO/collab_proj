@@ -1,3 +1,35 @@
+<?php
+require 'include/landing/connect.php';
+
+try {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $fullname = trim($_POST['fullname']);
+        $email = trim($_POST['email']);
+        $contact = trim($_POST['contact']);
+        $message = trim($_POST['message']);
+
+
+        if (!empty($fullname) && !empty($email) && !empty($contact) && !empty($message)) {
+            $sql = "INSERT INTO guest_feedback (fullname, email, contact, message, timeSent) 
+                VALUES (:fullname, :email, :contact, :message, NOW())";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([
+                ':fullname' => $fullname,
+                ':email' => $email,
+                ':contact' => $contact,
+                ':message' => $message
+            ]);
+
+            echo "<script>alert('Message sent successfully!');
+             window.location.href = '" . $_SERVER['PHP_SELF'] . "';
+            </script>";
+        }
+
+    }
+} catch (PDOException $e) {
+    echo "There is some problem in connection: " . $e->getMessage();
+}
+?>
 <!doctype html>
 <html>
 
@@ -66,25 +98,27 @@
                 class="absolute -top-60 right-20 ml-[60px] max-w-lg h-[72vh] mt-14 shadow-xl mx-auto bg-white p-3 lg:p-8 lg:rounded-r-2xl rounded-2xl">
                 <h2 class=" text-black font-manrope text-3xl font-semibold leading-10 mb-6">Contact Us</h2>
 
-                <form>
+                <form method="POST">
                     <input type="text"
                         class="w-full h-12 text-gray-600 placeholder-gray-400  shadow-sm bg-transparent text-lg font-normal leading-4 rounded-xl border border-gray-200 focus:outline-blue-700 pl-4 mb-5"
-                        placeholder="Name" autofocus>
+                        placeholder="Name" name="fullname" autofocus>
                     <input type="text"
                         class="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-4 rounded-xl border border-gray-200 focus:outline-blue-700  pl-4 mb-5"
-                        placeholder="Email">
+                        placeholder="Email" name="email">
                     <input type="text"
                         class="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-4 rounded-xl border border-gray-200 focus:outline-blue-700  pl-4 mb-5"
-                        placeholder="Phone">
+                        placeholder="Contact Number" name="contact">
                     <div class="mb-10">
                         <textarea id="message" rows="4"
                             class="block p-2.5 w-full text-gray-600 rounded-xl border border-gray-400 focus:outline-blue-700 "
-                            placeholder="Write your message here..."></textarea>
+                            name="message" placeholder="Write your message here..."></textarea>
                     </div>
+
+                    <button
+                        class="w-full h-12 text-white text-base font-semibold leading-6 rounded-full transition-all duration-700 hover:bg-blue-600 bg-blue-700 shadow-sm">Submit</button>
                 </form>
 
-                <button
-                    class="w-full h-12 text-white text-base font-semibold leading-6 rounded-full transition-all duration-700 hover:bg-blue-600 bg-blue-700 shadow-sm">Submit</button>
+
             </div>
 
             <!-- end of contact us form -->

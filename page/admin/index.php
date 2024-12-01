@@ -247,19 +247,19 @@ try {
 
             <div class="flex items-center justify-between gap-10">
                 <div
-                    class="w-[420px] bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 shadow-xl rounded-2xl p-6 transform transition-transform hover:scale-105">
-                    <canvas class="" id="myschart" width="400" height="500"></canvas>
+                    class="w-[400px] bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 shadow-xl rounded-2xl p-6 transform transition-transform hover:scale-105">
+                    <canvas class="" id="myschart" width="450" height="500"></canvas>
                     <script src="src/js/mySchart.js"></script>
                 </div>
 
                 <div
-                    class="w-[400px] h-[50vh] bg-gradient-to-r from-indigo-100 via-indigo-200 to-indigo-300 shadow-xl rounded-2xl p-6 transform transition-transform hover:scale-105">
+                    class="w-[380px] h-[50vh] bg-gradient-to-r from-indigo-100 via-indigo-200 to-indigo-300 shadow-xl rounded-2xl p-6 transform transition-transform hover:scale-105">
                     <canvas id="mytchart" width="400" height="500"></canvas>
                     <script src="src/js/myTchart.js"></script>
                 </div>
 
                 <div
-                    class="w-[400px] bg-gradient-to-r from-blue-200 via-blue-100 to-blue-100 shadow-xl rounded-2xl p-6 transform transition-transform hover:scale-105">
+                    class="w-[350px] bg-gradient-to-r from-blue-200 via-blue-100 to-blue-100 shadow-xl rounded-2xl p-6 transform transition-transform hover:scale-105">
                     <canvas id="myfchart" width="400" height="500"></canvas>
                     <script src="src/js/myFchart.js"></script>
                 </div>
