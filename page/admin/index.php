@@ -238,25 +238,26 @@ try {
 
                 <p class="mt-2"><span class="text-green-500 font-semibold">+10%</span> than last month</p>
             </div>
-            <div class="grid grid-cols-3 gap-[55vh]">
-            <div class="w-3/4 mt-10">
-                    <canvas id="myschart" width="400" height="600"></canvas>
+
+            <div class="flex items-center justify-between gap-10">
+                <div
+                    class="w-[420px] bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 shadow-xl rounded-2xl p-6 transform transition-transform hover:scale-105">
+                    <canvas class="" id="myschart" width="400" height="500"></canvas>
                     <script src="src/js/mySchart.js"></script>
                 </div>
-                <div class="1/4">
-                    <div class="h-[600px]">
-                    <canvas id="myfchart" class="w-full h-full"></canvas>
-                    <script src="src/js/myFchart.js"></script>
-                </div>
-                
-                <div class="h-[600px] mt-10">
-                    <canvas id="mytchart" class="w-full h-full"></canvas>
+
+                <div
+                    class="w-[400px] h-[50vh] bg-gradient-to-r from-indigo-100 via-indigo-200 to-indigo-300 shadow-xl rounded-2xl p-6 transform transition-transform hover:scale-105">
+                    <canvas id="mytchart" width="400" height="500"></canvas>
                     <script src="src/js/myTchart.js"></script>
                 </div>
-                </div>
-                
-            </div>
 
+                <div
+                    class="w-[400px] bg-gradient-to-r from-blue-200 via-blue-100 to-blue-100 shadow-xl rounded-2xl p-6 transform transition-transform hover:scale-105">
+                    <canvas id="myfchart" width="400" height="500"></canvas>
+                    <script src="src/js/myFchart.js"></script>
+                </div>
+            </div>
 
         </div>
     </div>
