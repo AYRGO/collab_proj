@@ -84,31 +84,50 @@
                 </thead>
 
                 <!-- table body -->
-               <tbody>
-                    <?php foreach ($users as $user): ?>
-                    <tr class="hover:bg-gray-100 transition duration-300 ease-in-out">
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['id']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['reference_id']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['application_type']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['fname']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['mname']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['lname']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['dob']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['sex']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['civil_status']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['address']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['contact']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['disability']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['cause']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['medicalcert']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['valid_id']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['photo']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['submitted_at']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['status']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['user_id']); ?></td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody> 
+                <tbody>
+    <?php foreach ($users as $user): ?>
+    <tr class="hover:bg-gray-100 transition duration-300 ease-in-out">
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['id']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['reference_id']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['application_type']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['fname']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['mname']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['lname']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['dob']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['sex']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['civil_status']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['address']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['contact']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['disability']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['cause']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300">
+            <?php if ($user['medicalcert']): ?>
+                <a href="../../include/registration_code/<?php echo htmlspecialchars($user['medicalcert']); ?>" target="_blank" class="text-blue-600 hover:underline">View</a>
+
+            <?php else: ?>
+                No file
+            <?php endif; ?>
+        </td>
+        <td class="text-center py-3 border-t border-gray-300">
+            <?php if ($user['valid_id']): ?>
+                <a href="../../include/registration_code/<?php echo htmlspecialchars($user['valid_id']); ?>" target="_blank" class="text-blue-600 hover:underline">View</a>
+            <?php else: ?>
+                No file
+            <?php endif; ?>
+        </td>
+        <td class="text-center py-3 border-t border-gray-300">
+            <?php if ($user['photo']): ?>
+                <a href="../../include/registration_code/<?php echo htmlspecialchars($user['photo']); ?>" target="_blank" class="text-blue-600 hover:underline">View</a>
+            <?php else: ?>
+                No photo
+            <?php endif; ?>
+        </td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['submitted_at']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['status']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['user_id']); ?></td>
+    </tr>
+    <?php endforeach; ?>
+</tbody>
             </table>
         </div>
 
