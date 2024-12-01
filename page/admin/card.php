@@ -1,5 +1,12 @@
 <?php
-    require '../../include/landing/connect.php';
+   session_start();
+   if (!isset($_SESSION['user'])) {
+       // If the user is not logged in, redirect them to the login page
+       header('Location: ../../loginpage.php');
+       exit(); // Ensure no further code execution after the redirect
+   }
+   
+   require '../../include/landing/connect.php';
 
     try {
         $sql = "SELECT * FROM pwdcard_applications";
