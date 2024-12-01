@@ -20,27 +20,27 @@
                     </svg>
                 </button>
 
-                <!-- Profile picture -->
-                <div class="group cursor-pointer">
-                    <img class="h-8 w-8 rounded-full" id="profileIcon"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt="Profile picture">
+             <!-- Profile picture -->
+<div class="group cursor-pointer">
+    <img class="h-8 w-8 rounded-full" id="profileIcon"
+        src="<?php echo isset($_SESSION['user']['photo']) && !empty($_SESSION['user']['photo']) ? $_SESSION['user']['photo'] : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'; ?>"
+        alt="Profile picture">
 
+    <div class="hidden dropdown absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-8"
+        id="dropdownProfile">
+        <ul class="p-3 space-y-3">
+            <li><a href="index.php"
+                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a>
+            </li>
+            <li><a href="usersetting.php"
+                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Settings</a>
+            </li>
+            <li><a href="../../include/user/logut.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a>
+            </li>
+        </ul>
+    </div>
+</div>
 
-                    <div class="hidden dropdown absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-8"
-                        id="dropdownProfile">
-                        <ul class="p-3 space-y-3">
-                            <li><a href="index.php"
-                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a>
-                            </li>
-                            <li><a href="usersetting.php"
-                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Settings</a>
-                            </li>
-                            <li><a href="../../include/user/logut.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </nav>
