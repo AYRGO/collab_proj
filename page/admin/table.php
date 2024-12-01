@@ -1,4 +1,11 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['user'])) {
+        // If the user is not logged in, redirect them to the login page
+        header('Location: ../../loginpage.php');
+        exit(); // Ensure no further code execution after the redirect
+    }
+    
     require '../../include/landing/connect.php';
 
     try {
@@ -69,7 +76,12 @@
                         <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['email']); ?></td>
                         <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['contact']); ?></td>
                         <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['usertype']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300 border-r border-gray-300"><?php echo htmlspecialchars($user['last_login']); ?></td>
+                        <td class="text-center py-3 border-t border-gray-300 border-r border-gray-300">
+    <?php 
+        $date = new DateTime($user['last_login']);
+        echo htmlspecialchars($date->format('F j, Y, g:i a')); // Example format: January 1, 2023, 12:00 pm
+    ?>
+</td>
                         <td class="flex justify-center items-center gap-3 py-3">
                             <a href="edit.php?id=<?php echo $user['id']; ?>" class="text-blue-500 hover:text-blue-700 text-lg">
                                 <i class="fa-solid fa-pen-to-square"></i>

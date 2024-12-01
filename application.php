@@ -90,7 +90,8 @@
 
 
             <!-- for the law for them -->
-            <div class="bg-gray-100 rounded-lg py-3 px-6 shadow-md cursor-pointer hover:bg-blue-900 hover:text-white
+             <a href="#law">
+             <div class="bg-gray-100 rounded-lg py-3 px-6 shadow-md cursor-pointer hover:bg-blue-900 hover:text-white
                  transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
                 <div class="w-12 h-12 rounded-full flex items-center justify-center bg-white">
                     <i class="fa-solid fa-gavel text-blue-800 text-2xl"></i>
@@ -101,6 +102,8 @@
                     <p class="py-1 text-sm">Laws ensuring the rights and protection of PWDs.</p>
                 </div>
             </div>
+             </a>
+           
 
         </div>
 

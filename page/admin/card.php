@@ -1,11 +1,23 @@
 <?php
-    require '../../include/landing/connect.php';
+   session_start();
+   if (!isset($_SESSION['user'])) {
+       // If the user is not logged in, redirect them to the login page
+       header('Location: ../../loginpage.php');
+       exit(); // Ensure no further code execution after the redirect
+   }
+   
+   require '../../include/landing/connect.php';
 
     try {
-        $sql = "SELECT id, fname, lname, email, contact, usertype, last_login FROM user_registration";
+        $sql = "SELECT * FROM pwdcard_applications";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $sql = "SELECT * FROM guardians";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $guardians = $stmt ->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         echo "There is some problem in connection: " . $e->getMessage();
     }
@@ -43,59 +55,112 @@
 <div class="ml-72 py-8 mr-10">
         <h1 class="text-3xl font-semibold mb-4 text-gray-800">PWD Card Applications</h1>
 
-        <h6>Applicants</h6>
+        <h6 class="text-2xl font-semibold mb-4 text-gray-800">Applicants</h6>
         <div class="overflow-x-auto bg-white shadow-lg rounded-lg border border-gray-200">
             <table class=" table-auto border-collapse">
                 <!-- table header -->
-                <thead class="bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-lg">
+                <thead class="bg-gradient-to-r from-blue-800 to-indigo-500 text-white text-lg">
                     <tr>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">ID</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Ref. ID</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Type</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">First Name</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Middle Name</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Last Name</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Date of Birth</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Sex</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Civil Status</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Sex</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Address</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Contact</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Disability</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Cause</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Medical Certificate</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Valid ID</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Photo</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Submitted At</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Disability</th>
-                        <th class="p-2 text-left font-semibold border-r border-gray-300">Status</th>
+                        <th class="py-2 px-4 text-left font-semibold border-r border-gray-300">ID</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Ref. ID</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Type</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">First Name</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Middle Name</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Last Name</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Date of Birth</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Sex</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Civil Status</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Address</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Contact</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Disability</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Cause</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Medical Certificate</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Valid ID</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Photo</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Submitted At</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">Status</th>
+                        <th class="py-2 px-4  text-left font-semibold border-r border-gray-300">User ID</th>
                     </tr>
                 </thead>
 
                 <!-- table body -->
-                <!-- <tbody>
-                    <?php foreach ($users as $user): ?>
-                    <tr class="hover:bg-gray-100 transition duration-300 ease-in-out">
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['id']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['fname']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['lname']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['email']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['contact']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['usertype']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300 border-r border-gray-300"><?php echo htmlspecialchars($user['last_login']); ?></td>
-                        <td class="flex justify-center items-center gap-3 py-3">
-                            <a href="edit.php?id=<?php echo $user['id']; ?>" class="text-blue-500 hover:text-blue-700 text-lg">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </a>
-                            <a href="delete.php?id=<?php echo $user['id']; ?>" class="text-red-500 hover:text-red-700 text-lg">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody> -->
+                <tbody>
+    <?php foreach ($users as $user): ?>
+    <tr class="hover:bg-gray-100 transition duration-300 ease-in-out">
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['id']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['reference_id']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['application_type']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['fname']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['mname']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['lname']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['dob']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['sex']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['civil_status']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['address']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['contact']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['disability']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['cause']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300">
+            <?php if ($user['medicalcert']): ?>
+                <a href="../../include/registration_code/<?php echo htmlspecialchars($user['medicalcert']); ?>" target="_blank" class="text-blue-600 hover:underline">View</a>
+
+            <?php else: ?>
+                No file
+            <?php endif; ?>
+        </td>
+        <td class="text-center py-3 border-t border-gray-300">
+            <?php if ($user['valid_id']): ?>
+                <a href="../../include/registration_code/<?php echo htmlspecialchars($user['valid_id']); ?>" target="_blank" class="text-blue-600 hover:underline">View</a>
+            <?php else: ?>
+                No file
+            <?php endif; ?>
+        </td>
+        <td class="text-center py-3 border-t border-gray-300">
+            <?php if ($user['photo']): ?>
+                <a href="../../include/registration_code/<?php echo htmlspecialchars($user['photo']); ?>" target="_blank" class="text-blue-600 hover:underline">View</a>
+            <?php else: ?>
+                No photo
+            <?php endif; ?>
+        </td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['submitted_at']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['status']); ?></td>
+        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['user_id']); ?></td>
+    </tr>
+    <?php endforeach; ?>
+</tbody>
             </table>
         </div>
+
+        <div class="py-12">
+    <h1 class="text-2xl font-semibold mb-4 text-gray-800">Applicant's Guardian</h1>
+
+    <div class="overflow-x-auto bg-white shadow-lg rounded-lg border border-gray-200">
+        <table class="w-full table-auto border-collapse">
+            <thead class="bg-gradient-to-r from-blue-800 to-indigo-500 text-white text-lg">
+                <tr>
+                    <th class="py-3 px-4 text-left font-semibold border-r border-gray-300">ID</th>
+                    <th class="py-3 px-4 text-left font-semibold border-r border-gray-300">PWD Application ID</th>
+                    <th class="py-3 px-4 text-left font-semibold border-r border-gray-300">Guardian</th>
+                    <th class="py-3 px-4 text-left font-semibold border-r border-gray-300">Relationship</th>
+                    <th class="py-3 px-4 text-left font-semibold border-r border-gray-300">Contact</th>
+                </tr>
+            </thead>
+
+            <!-- table body -->
+            <tbody>
+                <?php foreach ($guardians as $guardian): ?>
+                <tr class="hover:bg-gray-100 transition duration-300 ease-in-out">
+                    <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($guardian['id']); ?></td>
+                    <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($guardian['pwd_application_id']); ?></td>
+                    <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($guardian['guardian_name']); ?></td>
+                    <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($guardian['guardian_relationship']); ?></td>
+                    <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($guardian['guardian_contact']); ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
     </div>
 
 </body>

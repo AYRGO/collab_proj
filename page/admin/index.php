@@ -1,5 +1,11 @@
 <?php
 session_start();
+if (!isset($_SESSION['user'])) {
+    // If the user is not logged in, redirect them to the login page
+    header('Location: ../../loginpage.php');
+    exit(); // Ensure no further code execution after the redirect
+}
+
 require '../../include/landing/connect.php';
 
 try {
@@ -32,6 +38,7 @@ try {
     <link rel="icon" href="../../img/logo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="../../node_modules/chart.js/dist/chart.umd.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -50,8 +57,8 @@ try {
 
 
     <?php
-        $page = 'dashboard';
-        include '../../include/admin/sidebar.php';
+    $page = 'dashboard';
+    include '../../include/admin/sidebar.php';
     ?>
     <!-- end of side bar -->
 
@@ -108,12 +115,17 @@ try {
 
                 <!-- profile icon -->
                 <div class="group cursor-pointer relative">
-                    <img class="h-8 w-8 rounded-full" id="profileIcon" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Profile picture">
+                    <img class="h-8 w-8 rounded-full" id="profileIcon"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt="Profile picture">
 
-                    <div class="hidden dropdown absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-0" id="dropdownProfile">
+                    <div class="hidden dropdown absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-0"
+                        id="dropdownProfile">
                         <ul class="p-3 space-y-3">
-                            <li><a href="page/user/index.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a></li>
-                            <li><a href="../../include/user/logut.php" class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a></li>
+                            <li><a href="page/user/index.php"
+                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a></li>
+                            <li><a href="../../include/user/logut.php"
+                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -232,6 +244,27 @@ try {
 
                 <p class="mt-2"><span class="text-green-500 font-semibold">+10%</span> than last month</p>
             </div>
+
+            <div class="flex items-center justify-between gap-10">
+                <div
+                    class="w-[400px] bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 shadow-xl rounded-2xl p-6 transform transition-transform hover:scale-105">
+                    <canvas class="" id="myschart" width="450" height="500"></canvas>
+                    <script src="src/js/mySchart.js"></script>
+                </div>
+
+                <div
+                    class="w-[380px] h-[50vh] bg-gradient-to-r from-indigo-100 via-indigo-200 to-indigo-300 shadow-xl rounded-2xl p-6 transform transition-transform hover:scale-105">
+                    <canvas id="mytchart" width="400" height="500"></canvas>
+                    <script src="src/js/myTchart.js"></script>
+                </div>
+
+                <div
+                    class="w-[350px] bg-gradient-to-r from-blue-200 via-blue-100 to-blue-100 shadow-xl rounded-2xl p-6 transform transition-transform hover:scale-105">
+                    <canvas id="myfchart" width="400" height="500"></canvas>
+                    <script src="src/js/myFchart.js"></script>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -251,11 +284,11 @@ try {
         });
 
         const profileIcon = document.getElementById('profileIcon');
-    const dropdownProfile = document.getElementById('dropdownProfile');
+        const dropdownProfile = document.getElementById('dropdownProfile');
 
-    profileIcon.addEventListener('click', () => {
-        dropdownProfile.classList.toggle('hidden');
-    });
+        profileIcon.addEventListener('click', () => {
+            dropdownProfile.classList.toggle('hidden');
+        });
     </script>
 </body>
 
