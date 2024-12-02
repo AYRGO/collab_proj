@@ -1,12 +1,12 @@
 <?php
 session_start(); // Ensure the session is started
 
-// Check if the user is already logged in
 if (!isset($_SESSION['user'])) {
     // If the user is not logged in, redirect them to the login page
     header('Location: ../../loginpage.php');
     exit(); // Ensure no further code execution after the redirect
 }
+
 // If the user is logged in, continue with fetching the data
 require '../../include/landing/connect.php';
 

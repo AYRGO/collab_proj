@@ -104,10 +104,11 @@ try {
                                 ?>
                             </td>
                             <td class="flex justify-center items-center gap-3 py-3">
-                                <a href="delete.php?id=<?php echo $user['id']; ?>"
-                                    class="text-red-500 hover:text-red-700 text-lg">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
+                            <a href="delete.php?id=<?php echo $user['id']; ?>&type=user"
+   class="text-red-500 hover:text-red-700 text-lg">
+   <i class="fa-solid fa-trash"></i>
+</a>
+
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -159,11 +160,11 @@ try {
                             </td>
 
                             <td class="flex justify-center items-center gap-3 py-3">
-                                <a href="delete.php?id=<?php echo $feedback['id']; ?>"
-                                    class="text-red-500 hover:text-red-700 text-lg">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
-                            </td>
+    <a href="delete.php?id=<?php echo $feedback['id']; ?>&type=feedback"
+        class="text-red-500 hover:text-red-700 text-lg">
+        <i class="fa-solid fa-trash"></i>
+    </a>
+</td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
