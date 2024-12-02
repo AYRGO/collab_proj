@@ -104,10 +104,6 @@ try {
                                 ?>
                             </td>
                             <td class="flex justify-center items-center gap-3 py-3">
-                                <a href="edit.php?id=<?php echo $user['id']; ?>"
-                                    class="text-blue-500 hover:text-blue-700 text-lg">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
                                 <a href="delete.php?id=<?php echo $user['id']; ?>"
                                     class="text-red-500 hover:text-red-700 text-lg">
                                     <i class="fa-solid fa-trash"></i>
@@ -134,6 +130,7 @@ try {
                         <th class="p-4 text-left font-semibold border-r border-gray-300">First Name</th>
                         <th class="p-4 text-left font-semibold border-r border-gray-300">Last Name</th>
                         <th class="p-4 text-left font-semibold border-r border-gray-300">Feedback</th>
+                        <th class="p-4 text-left font-semibold border-r border-gray-300">Actions</th>
                     </tr>
                 </thead>
 
@@ -159,6 +156,13 @@ try {
 
                             <td class="text-center py-3 border-t border-gray-300">
                                 <?php echo htmlspecialchars($feedback['feedback']); ?>
+                            </td>
+
+                            <td class="flex justify-center items-center gap-3 py-3">
+                                <a href="delete.php?id=<?php echo $feedback['id']; ?>"
+                                    class="text-red-500 hover:text-red-700 text-lg">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

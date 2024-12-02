@@ -10,7 +10,7 @@ require '../../include/landing/connect.php';
 
 try {
     // for the admin
-    $sql = "SELECT * from administrator";
+    $sql = "SELECT admin_id, action, timestamp FROM admin_audit_trail";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $admins = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -51,9 +51,9 @@ try {
     include '../../include/admin/sidebar.php';
     ?>
 
-<!-- admin -->
+    <!-- admin -->
 
- <div class="ml-72 py-8 mr-10">
+    <div class="ml-72 py-8 mr-10">
         <h1 class="text-3xl font-semibold mb-4 text-gray-800">Admin History</h1>
 
         <div class="overflow-x-auto bg-white shadow-lg rounded-lg border border-gray-200">
@@ -71,10 +71,21 @@ try {
                 <!-- table body -->
                 <tbody>
                     <?php foreach ($admins as $admin): ?>
-                    <tr class="hover:bg-gray-100 transition duration-300 ease-in-out">
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($admin['admin_id']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($admin['username']); ?></td>
-                    </tr>
+                        <tr class="hover:bg-gray-100 transition duration-300 ease-in-out">
+                            <td class="text-center py-3 border-t border-gray-300">
+                                <?php echo htmlspecialchars($admin['admin_id']); ?>
+                            </td>
+            
+                            <td class="text-center py-3 border-t border-gray-300">
+                                <?php echo htmlspecialchars($admin['action']); ?>
+                            </td>
+                            <td class="text-center py-3 border-t border-gray-300 border-r border-gray-300">
+                                <?php
+                                $date = new DateTime($admin['last_login']);
+                                echo htmlspecialchars($date->format('F j, Y, g:i a')); // Example format: January 1, 2023, 12:00 pm
+                                ?>
+                            </td>
+                        </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -100,10 +111,14 @@ try {
                 <!-- table body -->
                 <tbody>
                     <?php foreach ($admins as $admin): ?>
-                    <tr class="hover:bg-gray-100 transition duration-300 ease-in-out">
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($admin['admin_id']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($admin['username']); ?></td>
-                    </tr>
+                        <tr class="hover:bg-gray-100 transition duration-300 ease-in-out">
+                            <td class="text-center py-3 border-t border-gray-300">
+                                <?php echo htmlspecialchars($admin['admin_id']); ?>
+                            </td>
+                            <td class="text-center py-3 border-t border-gray-300">
+                                <?php echo htmlspecialchars($admin['username']); ?>
+                            </td>
+                        </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
