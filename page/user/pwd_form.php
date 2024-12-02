@@ -19,6 +19,7 @@
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../img/logo.png" type="image/png">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>PWD Application Form</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -172,7 +173,7 @@
                     <option value="Single">Single</option>
                     <option value="Married">Married</option>
                     <option value="Widowed">Widowed</option>
-                    <option value="Separted">Separated</option>
+                    <option value="Separated">Separated</option>
                 </select>
 
                 <label for="address" class="block font-semibold mb-1">Full Adress</label>
