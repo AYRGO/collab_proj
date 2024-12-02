@@ -50,6 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 // Redirect based on user type
                 if (isset($user['user_type']) && $user['user_type'] === 'admin') {
+                    $updateSql = "UPDATE administrator SET last_login = NOW() WHERE username = :login";
+                    $stmt = $pdo->prepare($updateSql);
+                    $stmt->execute([':login' => $login]);
+
+                    
                     $_SESSION['admin'] = $user;
                     header('Location: page/admin/index.php');
                 } else {
