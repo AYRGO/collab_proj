@@ -88,31 +88,44 @@ try {
                     <?php foreach ($users as $user): ?>
                         <tr class="hover:bg-gray-100 transition duration-300 ease-in-out">
                             <td class="text-center py-3 border-t border-gray-300">
-                                <?php echo htmlspecialchars($user['id']); ?></td>
+                                <?php echo htmlspecialchars($user['id']); ?>
+                            </td>
                             <td class="text-center py-3 border-t border-gray-300">
-                                <?php echo htmlspecialchars($user['reference_id']); ?></td>
+                                <?php echo htmlspecialchars($user['reference_id']); ?>
+                            </td>
                             <td class="text-center py-3 border-t border-gray-300">
-                                <?php echo htmlspecialchars($user['application_type']); ?></td>
+                                <?php echo htmlspecialchars($user['application_type']); ?>
+                            </td>
                             <td class="text-center py-3 border-t border-gray-300">
-                                <?php echo htmlspecialchars($user['fname']); ?></td>
+                                <?php echo htmlspecialchars($user['fname']); ?>
+                            </td>
                             <td class="text-center py-3 border-t border-gray-300">
-                                <?php echo htmlspecialchars($user['mname']); ?></td>
+                                <?php echo htmlspecialchars($user['mname']); ?>
+                            </td>
                             <td class="text-center py-3 border-t border-gray-300">
-                                <?php echo htmlspecialchars($user['lname']); ?></td>
+                                <?php echo htmlspecialchars($user['lname']); ?>
+                            </td>
                             <td class="text-center py-3 border-t border-gray-300">
-                                <?php echo htmlspecialchars($user['dob']); ?></td>
+                                <?php echo htmlspecialchars($user['dob']); ?>
+                            </td>
                             <td class="text-center py-3 border-t border-gray-300">
-                                <?php echo htmlspecialchars($user['sex']); ?></td>
+                                <?php echo htmlspecialchars($user['sex']); ?>
+                            </td>
                             <td class="text-center py-3 border-t border-gray-300">
-                                <?php echo htmlspecialchars($user['civil_status']); ?></td>
+                                <?php echo htmlspecialchars($user['civil_status']); ?>
+                            </td>
                             <td class="text-center py-3 border-t border-gray-300">
-                                <?php echo htmlspecialchars($user['address']); ?></td>
+                                <?php echo htmlspecialchars($user['address']); ?>
+                            </td>
                             <td class="text-center py-3 border-t border-gray-300">
-                                <?php echo htmlspecialchars($user['contact']); ?></td>
+                                <?php echo htmlspecialchars($user['contact']); ?>
+                            </td>
                             <td class="text-center py-3 border-t border-gray-300">
-                                <?php echo htmlspecialchars($user['disability']); ?></td>
+                                <?php echo htmlspecialchars($user['disability']); ?>
+                            </td>
                             <td class="text-center py-3 border-t border-gray-300">
-                                <?php echo htmlspecialchars($user['cause']); ?></td>
+                                <?php echo htmlspecialchars($user['cause']); ?>
+                            </td>
                             <td class="text-center py-3 border-t border-gray-300">
                                 <?php if ($user['medicalcert']): ?>
                                     <a href="../../include/registration_code/<?php echo htmlspecialchars($user['medicalcert']); ?>"
@@ -144,11 +157,13 @@ try {
                                 echo htmlspecialchars($date->format('F j, Y, g:i a')); // Example format: January 1, 2023, 12:00 pm
                                 ?>
                             </td>
-            
+
                             <td class="text-center py-3 border-t border-gray-300">
-                                <?php echo htmlspecialchars($user['status']); ?></td>
+                                <?php echo htmlspecialchars($user['status']); ?>
+                            </td>
                             <td class="text-center py-3 border-t border-gray-300">
-                                <?php echo htmlspecialchars($user['user_id']); ?></td>
+                                <?php echo htmlspecialchars($user['user_id']); ?>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -176,15 +191,20 @@ try {
                         <?php foreach ($guardians as $guardian): ?>
                             <tr class="hover:bg-gray-100 transition duration-300 ease-in-out">
                                 <td class="text-center py-3 border-t border-gray-300">
-                                    <?php echo htmlspecialchars($guardian['id']); ?></td>
+                                    <?php echo htmlspecialchars($guardian['id']); ?>
+                                </td>
                                 <td class="text-center py-3 border-t border-gray-300">
-                                    <?php echo htmlspecialchars($guardian['pwd_application_id']); ?></td>
+                                    <?php echo htmlspecialchars($guardian['pwd_application_id']); ?>
+                                </td>
                                 <td class="text-center py-3 border-t border-gray-300">
-                                    <?php echo htmlspecialchars($guardian['guardian_name']); ?></td>
+                                    <?php echo htmlspecialchars($guardian['guardian_name']); ?>
+                                </td>
                                 <td class="text-center py-3 border-t border-gray-300">
-                                    <?php echo htmlspecialchars($guardian['guardian_relationship']); ?></td>
+                                    <?php echo htmlspecialchars($guardian['guardian_relationship']); ?>
+                                </td>
                                 <td class="text-center py-3 border-t border-gray-300">
-                                    <?php echo htmlspecialchars($guardian['guardian_contact']); ?></td>
+                                    <?php echo htmlspecialchars($guardian['guardian_contact']); ?>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
