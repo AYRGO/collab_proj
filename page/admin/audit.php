@@ -9,10 +9,13 @@ if (!isset($_SESSION['user'])) {
 require '../../include/landing/connect.php';
 
 try {
+    // for the admin
     $sql = "SELECT * from administrator";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
-    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $admins = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // for the user
 } catch (PDOException $e) {
     echo "There is some problem in connection: " . $e->getMessage();
 }
@@ -49,7 +52,7 @@ try {
     ?>
 
 <!-- admin -->
- <section>
+
  <div class="ml-72 py-8 mr-10">
         <h1 class="text-3xl font-semibold mb-4 text-gray-800">Admin History</h1>
 
@@ -67,17 +70,46 @@ try {
 
                 <!-- table body -->
                 <tbody>
-                    <?php foreach ($users as $user): ?>
+                    <?php foreach ($admins as $admin): ?>
                     <tr class="hover:bg-gray-100 transition duration-300 ease-in-out">
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['admin_id']); ?></td>
-                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($user['username']); ?></td>
+                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($admin['admin_id']); ?></td>
+                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($admin['username']); ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
     </div>
- </section>
+
+    <div class="ml-72 py-8 mr-10">
+        <h1 class="text-3xl font-semibold mb-4 text-gray-800">User History</h1>
+
+        <div class="overflow-x-auto bg-white shadow-lg rounded-lg border border-gray-200">
+            <table class="min-w-full table-auto border-collapse">
+                <!-- table header -->
+                <thead class="bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-lg">
+                    <tr>
+                        <th class="p-4 text-left font-semibold border-r border-gray-300">ID</th>
+                        <th class="p-4 text-left font-semibold border-r border-gray-300">First Name</th>
+                        <th class="p-4 text-left font-semibold border-r border-gray-300">Last Name</th>
+                        <th class="p-4 text-left font-semibold border-r border-gray-300">Action</th>
+                        <th class="p-4 text-left font-semibold border-r border-gray-300">Last Login</th>
+                    </tr>
+                </thead>
+
+                <!-- table body -->
+                <tbody>
+                    <?php foreach ($admins as $admin): ?>
+                    <tr class="hover:bg-gray-100 transition duration-300 ease-in-out">
+                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($admin['admin_id']); ?></td>
+                        <td class="text-center py-3 border-t border-gray-300"><?php echo htmlspecialchars($admin['username']); ?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 
 </body>
 

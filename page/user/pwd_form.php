@@ -173,7 +173,7 @@
                     <option value="Single">Single</option>
                     <option value="Married">Married</option>
                     <option value="Widowed">Widowed</option>
-                    <option value="Separted">Separated</option>
+                    <option value="Separated">Separated</option>
                 </select>
 
                 <label for="address" class="block font-semibold mb-1">Full Adress</label>
