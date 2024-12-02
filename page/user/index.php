@@ -125,7 +125,7 @@ try {
                     </div>
                     <div class="flex items-center justify-between mt-2">
                         <span class="font-bold">PWD Card</span>
-                        <p class="text-emerald-900 font-semibold">Approved</p>
+                        <p class="text-emerald-900 font-semibold">Pending</p>
                     </div>
                 </div>
             </div>

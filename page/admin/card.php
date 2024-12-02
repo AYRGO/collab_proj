@@ -151,14 +151,14 @@ try {
                                     No photo
                                 <?php endif; ?>
                             </td>
-                            <td class="text-center py-3 border-t border-gray-300 border-r border-gray-300">
+                            <td class="text-center py-3 border-t border-gray-300">
                                 <?php
                                 $date = new DateTime($user['submitted_at']);
                                 echo htmlspecialchars($date->format('F j, Y, g:i a')); // Example format: January 1, 2023, 12:00 pm
                                 ?>
                             </td>
 
-                            <td class="text-center py-3 border-t border-gray-300">
+                            <td class="text-center py-3 border-t border-gray-300 text-red-400">
                                 <?php echo htmlspecialchars($user['status']); ?>
                             </td>
                             <td class="text-center py-3 border-t border-gray-300">
