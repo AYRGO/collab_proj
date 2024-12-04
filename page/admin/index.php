@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['admin_id'])) {
     // If the user is not logged in, redirect them to the login page
     header('Location: ../../loginpage.php');
     exit(); // Ensure no further code execution after the redirect
@@ -122,8 +122,6 @@ try {
                     <div class="hidden dropdown absolute w-[300px] bg-white rounded-lg shadow-lg top-16 right-0"
                         id="dropdownProfile">
                         <ul class="p-3 space-y-3">
-                            <li><a href="page/user/index.php"
-                                    class="block hover:bg-gray-400 hover:text-white p-2 rounded">Profile</a></li>
                             <li><a href="../../include/user/logut.php"
                                     class="block hover:bg-gray-400 hover:text-white p-2 rounded">Sign out</a></li>
                         </ul>
@@ -259,7 +257,7 @@ try {
                 </div>
 
                 <div
-                    class="w-[350px] bg-gradient-to-r from-blue-200 via-blue-100 to-blue-100 shadow-xl rounded-2xl p-6 transform transition-transform hover:scale-105">
+                    class="w-[350px] bg-gradient-to-r from-gray-200 via-gray-100 to-blue-100 shadow-xl rounded-2xl p-6 transform transition-transform hover:scale-105">
                     <canvas id="myfchart" width="400" height="500"></canvas>
                     <script src="src/js/myFchart.js"></script>
                 </div>

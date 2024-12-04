@@ -1,6 +1,12 @@
 <?php
 session_start(); // Ensure the session is started
 
+if (!isset($_SESSION['user'])) {
+    // If the user is not logged in, redirect them to the login page
+    header('Location: ../../loginpage.php');
+    exit(); // Ensure no further code execution after the redirect
+}
+
 // If the user is logged in, continue with fetching the data
 require '../../include/landing/connect.php';
 
@@ -119,7 +125,7 @@ try {
                     </div>
                     <div class="flex items-center justify-between mt-2">
                         <span class="font-bold">PWD Card</span>
-                        <p class="text-emerald-900 font-semibold">Approved</p>
+                        <p class="text-emerald-900 font-semibold">Pending</p>
                     </div>
                 </div>
             </div>
